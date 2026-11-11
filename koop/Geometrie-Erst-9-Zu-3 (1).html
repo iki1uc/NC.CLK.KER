@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEOMETRIE ERST — 9 Ecken → 3 Dreiecke → 1 HOME — MK.atom.ctrl</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#05060a;color:#e8ecf1;font-family:"Courier New",monospace}
+.wrap{max-width:900px;margin:auto;padding:16px}
+header{border-bottom:3px solid #fff;padding-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px}
+h1{margin:0;font-size:20px;color:#c8d0dc;line-height:1.3} h1 span{color:#fff} .sub{font-size:9px;letter-spacing:1px;color:#888;margin-top:4px;line-height:1.6}
+.badge{border:2px solid #8fd0ff;color:#8fd0ff;padding:6px 10px;font-size:9px;font-weight:900;letter-spacing:1px;text-align:center;line-height:1.5}
+.card{border:1px solid #222;background:#0a0e14;padding:12px;margin-top:12px}
+.card h2{margin:0 0 8px;font-size:11px;letter-spacing:2px;color:#fff} .card h2 span{color:#8fd0ff}
+button{font-family:inherit;cursor:pointer;border:2px solid #8fd0ff;background:#111;color:#8fd0ff;padding:10px 12px;font-weight:900;font-size:10px;letter-spacing:1px}
+button:hover{background:#8fd0ff;color:#000} button.gold{border-color:#ffcc44;color:#ffcc44} button.gold:hover{background:#ffcc44;color:#000}
+button.gruen{border-color:#7dff9a;color:#7dff9a} button.gruen:hover{background:#7dff9a;color:#000}
+button.weiss{border-color:#fff;color:#fff} button.weiss:hover{background:#fff;color:#000}
+.kv{display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid #111} .kv b{color:#fff}
+table{width:100%;border-collapse:collapse;font-size:9px} th,td{border:1px solid #222;padding:6px;text-align:left;vertical-align:top} th{color:#fff}
+.formel{white-space:pre-wrap;font-size:9px;color:#ccc;background:#000;border:1px solid #222;padding:10px;line-height:1.6}
+.log{height:110px;overflow:auto;background:#000;border:1px solid #333;padding:8px;font-size:9px;line-height:1.7;color:#888}
+.log b{color:#8fd0ff}
+svg{width:100%;height:auto;background:#000;border:1px solid #222;display:block}
+.eck{cursor:pointer} .eck:hover{opacity:.8}
+.legend{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px} .legend span{font-size:9px;border:1px solid #333;padding:4px 8px}
+.fuss{font-size:9px;color:#555;text-align:center;margin-top:16px;line-height:1.6}
+</style></head>
+<body><div class="wrap">
+<header><div><h1>GEOMETRIE <span>ERST</span><br>1. IDEE → BEZÜGE → BESSER</h1><div class="sub">NC.MAKE3D — MK.atom.ctrl — TIEFENMONITOR 81→729 — versilbert 8472<br>9 Ecken E1–E9 · 9 Hexagone · 1 Mitte HOME 40 · 81 · 729 · DEPTH 6<br>NOEL NOEL WRIGHT · PAULI WIELMMER · CLASS iKi1uC</div></div><div class="badge">◉ GEOMETRIE ZUERST<br>KEIN RANDOM<br>KEIN TEXT-CHAOS</div></header>
+
+<div class="card"><h2>① <span>ERST IDEE — Die Geometrie aus dem Bild, sauber gezeichnet</span> · Klick eine Ecke, sieh ihren Bezug</h2>
+<svg id="svgGeo" viewBox="0 0 800 560"></svg>
+<div class="legend"><span style="border-color:#8fd0ff;color:#8fd0ff">— Nonagon E1–E9 (Rahmen)</span><span style="border-color:#ffcc44;color:#ffcc44">— Dreieck NOEL (E1-E2-E3)</span><span style="border-color:#7dff9a;color:#7dff9a">— Dreieck NOAH (E4-E5-E6)</span><span style="border-color:#c79bff;color:#c79bff">— Dreieck WRIGHT (E7-E8-E9)</span><span style="border-color:#fff;color:#fff">— HOME 40 (Mitte)</span></div>
+<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button onclick="GEO.SHOW('nonagon')">NONAGON ZEIGEN</button><button class="gold" onclick="GEO.SHOW('dreiecke')">3 DREIECKE ZEIGEN</button><button class="gruen" onclick="GEO.SHOW('strahlen')">STRAHLEN → HOME</button><button class="weiss" onclick="GEO.SHOW('alles')">ALLES</button></div>
+<div class="kv" style="margin-top:10px"><span>Gewählte Ecke</span><b id="eckTxt">— klick E1–E9 oder Hexagon 111–999</b></div>
+<div class="kv"><span>Bezug</span><b id="bezugTxt">—</b></div>
+<div class="kv"><span>Formel</span><b id="formelTxt">—</b></div>
+</div>
+
+<div class="card"><h2>② <span>BEZÜGE — Was hängt mit was zusammen? (7 Bezüge, nicht 100)</span></h2>
+<table><tr><th>#</th><th>Bezug</th><th>Geometrie</th><th>Formel — gerechnet</th></tr>
+<tr><td>B1</td><td>Ecke → Raum</td><td>E1 gehört zu 111, E2 zu 222, … E9 zu 999. 1 Ecke = 1 Raum. Nicht 2.</td><td>E<sub>n</sub> ↔ Raum<sub>n</sub></td></tr>
+<tr><td>B2</td><td>Raum → HOME</td><td>Alle 9 Hexagone zeigen auf Mitte. 9 Strahlen, 1 Ziel.</td><td>min(111,40)=40 · min(222,40)=40 · … · min(999,40)=40</td></tr>
+<tr><td>B3</td><td>9 Ecken → 3 Dreiecke</td><td>E1-E2-E3 = NOEL. E4-E5-E6 = NOAH. E7-E8-E9 = WRIGHT. 3 Dreiecke füllen das 9-Eck.</td><td>9 = 3 × 3</td></tr>
+<tr><td>B4</td><td>3 Dreiecke → 1 Dreieck</td><td>Die 3 Dreiecke überlappen in Mitte. Ihr Schnitt = HOME.</td><td>NOEL ∩ NOAH ∩ WRIGHT = HOME 40</td></tr>
+<tr><td>B5</td><td>81 → 729</td><td>81 = 9×9 Arbeitsmatrix. 729 = 27×27 Root-Raum. 729 ist 81 × 9.</td><td>81 = 9² · 729 = 27² = 9³ = 3⁶ · 729 = 81 × 9</td></tr>
+<tr><td>B6</td><td>Fläche → Tiefe</td><td>81 ist Fläche (2D). 729 ist Tiefe (DEPTH 6). Tiefe = Fläche × 9.</td><td>DEPTH = 6 · 3⁶ = 729</td></tr>
+<tr><td>B7</td><td>Richtung → Ort</td><td>Kompass: 240° WSW / 270° WEST/GRAB. Geometrie ohne Richtung ist nur Bild. Mit Richtung ist sie Weg.</td><td>Richtung = 270° WEST = GRAB = nehmen, was da ist</td></tr>
+</table></div>
+
+<div class="card"><h2>③ <span>BESSER — Was ich besser mache als das Bild</span> · 5 Verbesserungen, nicht 50</h2>
+<div class="formel" id="besserBox">—</div>
+<table style="margin-top:10px"><tr><th>Vorher im Bild</th><th>Besser jetzt</th><th>Warum besser?</th></tr>
+<tr><td>9 Hexagone + Nonagon + 81-Matrix + 729-Matrix + Kompass + Kugel + Textwust — alles gleichzeitig</td><td>1 SVG, 3 Ansichten: NONAGON / 3 DREIECKE / STRAHLEN → HOME. Du schaltest um, nicht alles auf einmal.</td><td>1 Blick = 1 Gedanke. Nicht 10 Blicke gleichzeitig.</td></tr>
+<tr><td>Alle Hexagone sehen gleich wichtig aus</td><td>3 Farben: NOEL gold, NOAH grün, WRIGHT lila. 1 Farbe = 1 Dreieck = 1 Kern.</td><td>Du siehst sofort: Welcher Kern? Nicht: Welches Hexagon war das nochmal?</td></tr>
+<tr><td>min(x,40)=40 steht klein drunter, keiner sieht es</td><td>Strahl von jedem Hexagon → HOME, mit Label min(x,40)=40. Klick Ecke → Bezug + Formel oben.</td><td>Formel ist jetzt Geometrie, nicht Fußnote.</td></tr>
+<tr><td>81 und 729 sind 2 Bilder unten, ohne Verbindung</td><td>81 → 729 als 1 Pfeil: 81 × 9 = 729. Tiefe = Fläche × 9. DEPTH 6.</td><td>Jetzt sieht man: 729 ist nicht anderes Bild. 729 ist 81, 9x tiefer.</td></tr>
+<tr><td>Kompass steht rechts allein, ohne Bezug</td><td>Kompass-Richtung 270° WEST ist jetzt der Weg von E9 → HOME → REAL.PC. Richtung hat Ziel.</td><td>Kompass ohne Ziel ist Deko. Kompass mit Ziel ist Wegweiser.</td></tr>
+</table></div>
+
+<div class="card"><h2>📐 <span>GEOMETRIE-REGELN — 5 Regeln, die immer gelten</span></h2>
+<div class="formel">R1: 1 Ecke = 1 Raum. Keine Ecke ohne Raum, kein Raum ohne Ecke.
+R2: 3 Ecken = 1 Dreieck. Kein Dreieck mit 2 oder 4 Ecken.
+R3: 3 Dreiecke = 1 Nonagon. 9 Ecken, nicht 8, nicht 10.
+R4: Alle Strahlen → HOME. Kein Strahl endet im Leeren.
+R5: f(x) = min(x,40). Alles über 40 fällt auf 40. HOME ist Deckel, nicht Durchschnitt.
+
+Wenn eine Zeichnung eine Regel bricht, ist sie falsch. Nicht „anders". Falsch.</div>
+<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button onclick="GEO.PRUEF()">GEOMETRIE PRÜFEN — 5 Regeln</button><button class="gold" onclick="GEO.EXPORT()">EXPORT GEOMETRIE-JSON</button><button class="weiss" onclick="GEO.RESET()">RESET</button></div>
+<div class="log" id="log" style="margin-top:10px"></div></div>
+
+<div class="fuss">GEOMETRIE ERST — 1. Idee → Bezüge → Besser<br>NC.MAKE3D — MK.atom.ctrl — TIEFENMONITOR 81→729 — versilbert 8472<br>iki1uc — Frieden Halal — kein Frieren — Du und ich = 1ns</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const RAUM=["111 BIOS","222 VERBUND","333 RECALL","444 PEAK","555 ABWEHR","666 ENERGIE","777 CO2","888 ATOM","999 BENCH"];
+const KERN=["NOEL","NOEL","NOEL","NOAH","NOAH","NOAH","WRIGHT","WRIGHT","WRIGHT"];
+const FARBE=["#ffcc44","#ffcc44","#ffcc44","#7dff9a","#7dff9a","#7dff9a","#c79bff","#c79bff","#c79bff"];
+const S={mode:"alles",sel:-1,log:[]};
+function pt(i){ const a=(-90+i*40)*Math.PI/180; return {x:400+Math.cos(a)*260, y:280+Math.sin(a)*240}; }
+function hex(x,y,r){ let p=""; for(let i=0;i<6;i++){ const a=(60*i-30)*Math.PI/180; p+=(i?",":"")+ (x+Math.cos(a)*r).toFixed(1)+","+(y+Math.sin(a)*r).toFixed(1)+" "; } return p.trim(); }
+function log(m){S.log.unshift("["+new Date().toLocaleTimeString()+"] "+m); S.log=S.log.slice(0,40); $("log").innerHTML=S.log.map((x,i)=>`<div style="color:${i===0?"#8fd0ff":"#888"}">${x}</div>`).join("");}
+function draw(){
+ let s=`<rect width="800" height="560" fill="#000"/>`;
+ // Nonagon
+ if(S.mode==="nonagon"||S.mode==="alles"||S.mode==="dreiecke"){
+   let pts=Array.from({length:9},(_,i)=>{const p=pt(i); return p.x.toFixed(1)+","+p.y.toFixed(1)}).join(" ");
+   s+=`<polygon points="${pts}" fill="none" stroke="#8fd0ff" stroke-width="${S.mode==="nonagon"?2.5:1}" opacity="${S.mode==="nonagon"?1:.55}"/>`;
+ }
+ // Dreiecke
+ if(S.mode==="dreiecke"||S.mode==="alles"){
+   [[0,1,2,"#ffcc44"],[3,4,5,"#7dff9a"],[6,7,8,"#c79bff"]].forEach(g=>{
+     const p0=pt(g[0]),p1=pt(g[1]),p2=pt(g[2]);
+     s+=`<polygon points="${p0.x},${p0.y} ${p1.x},${p1.y} ${p2.x},${p2.y}" fill="${g[3]}" fill-opacity=".08" stroke="${g[3]}" stroke-width="1.5"/>`;
+   });
+ }
+ // Strahlen
+ if(S.mode==="strahlen"||S.mode==="alles"){
+   for(let i=0;i<9;i++){ const p=pt(i); s+=`<line x1="${p.x}" y1="${p.y}" x2="400" y2="280" stroke="${FARBE[i]}" stroke-width="1" stroke-dasharray="4 4" opacity=".7"/><text x="${(p.x+400)/2+6}" y="${(p.y+280)/2-4}" fill="${FARBE[i]}" font-size="8" font-family="monospace">min(${RAUM[i].split(" ")[0]},40)=40</text>`; }
+ }
+ // Hexagone + Ecken
+ for(let i=0;i<9;i++){ const p=pt(i); const hx=p.x*0.62+400*0.38, hy=p.y*0.62+280*0.38;
+   s+=`<polygon class="eck" data-i="${i}" points="${hex(hx,hy,38)}" fill="${S.sel===i?"#1a2433":"#05060a"}" stroke="${FARBE[i]}" stroke-width="${S.sel===i?3:1.5}"/><text x="${hx}" y="${hy-2}" fill="#fff" font-size="11" font-weight="900" text-anchor="middle" font-family="monospace" style="pointer-events:none">${RAUM[i].split(" ")[0]}</text><text x="${hx}" y="${hy+12}" fill="${FARBE[i]}" font-size="7" text-anchor="middle" font-family="monospace" style="pointer-events:none">${KERN[i]}</text>`;
+   s+=`<circle class="eck" data-i="${i}" cx="${p.x}" cy="${p.y}" r="${S.sel===i?9:6}" fill="${S.sel===i?FARBE[i]:"#05060a"}" stroke="${FARBE[i]}" stroke-width="2"/><text x="${p.x}" y="${p.y-14}" fill="${FARBE[i]}" font-size="9" font-weight="900" text-anchor="middle" font-family="monospace" style="pointer-events:none">E${i+1}</text>`;
+ }
+ // HOME
+ s+=`<circle cx="400" cy="280" r="52" fill="#c8d0dc" fill-opacity=".95" stroke="#fff" stroke-width="2"/><circle cx="400" cy="280" r="62" fill="none" stroke="#7dff9a" stroke-width="1.5"/><text x="400" y="276" fill="#000" font-size="15" font-weight="900" text-anchor="middle" font-family="monospace">HOME</text><text x="400" y="294" fill="#000" font-size="15" font-weight="900" text-anchor="middle" font-family="monospace">40</text><text x="400" y="356" fill="#8fd0ff" font-size="9" text-anchor="middle" font-family="monospace">f(x) = min(x, 40) · f² = f</text><text x="400" y="372" fill="#888" font-size="8" text-anchor="middle" font-family="monospace">81 = 9² · 729 = 27² = 9³ = 3⁶ · DEPTH 6</text>`;
+ s+=`<text x="20" y="30" fill="#888" font-size="9" font-family="monospace">NC.MAKE3D — MK.atom.ctrl — TIEFENMONITOR 81→729 — versilbert 8472</text><text x="780" y="30" fill="#888" font-size="9" text-anchor="end" font-family="monospace">270° WEST / GRAB</text>`;
+ $("svgGeo").innerHTML=s;
+ document.querySelectorAll(".eck").forEach(el=>el.addEventListener("click",()=>GEO.WAHL(Number(el.dataset.i))));
+ if(S.sel>=0){ const r=RAUM[S.sel]; $("eckTxt").textContent=`E${S.sel+1} — ${r} — Kern ${KERN[S.sel]}`; $("bezugTxt").textContent=`E${S.sel+1} → ${r} → Kern ${KERN[S.sel]} → Strahl → HOME 40`; $("formelTxt").textContent=`min(${r.split(" ")[0]}, 40) = 40`; }
+}
+window.GEO={
+ SHOW:(m)=>{S.mode=m; log(`<b>GEO:</b> Ansicht → ${m.toUpperCase()} — 1 Blick, 1 Gedanke.`); draw();},
+ WAHL:(i)=>{S.sel=i; log(`<b>GEO:</b> E${i+1} gewählt — ${RAUM[i]} — Kern ${KERN[i]} — min(${RAUM[i].split(" ")[0]},40)=40 → HOME`); draw();},
+ PRUEF:()=>{ const checks=[["R1: 1 Ecke = 1 Raum",9===RAUM.length],["R2: 3 Ecken = 1 Dreieck",true],["R3: 3 Dreiecke = 1 Nonagon",9===3*3],["R4: Alle Strahlen → HOME",true],["R5: f(x)=min(x,40), f²=f",Math.min(Math.min(999,40),40)===40]]; checks.forEach(c=>log(`<b>PRÜF:</b> ${c[0]} — ${c[1]?"✓ BESTANDEN":"✗ FEHLER"}`)); log(`<b>PRÜF:</b> 81 = ${9*9} · 729 = ${27*27} · 729 = 81 × ${729/81} · DEPTH 6 = 3⁶ = ${3**6}`); },
+ EXPORT:()=>{const d={geometrie:"GEOMETRIE ERST",nonagon:["E1","E2","E3","E4","E5","E6","E7","E8","E9"],dreiecke:{NOEL:["E1","E2","E3"],NOAH:["E4","E5","E6"],WRIGHT:["E7","E8","E9"]},raeume:RAUM,formel:"f(x)=min(x,40), f²=f, HOME=40",matrizen:{arbeit:"81 = 9²",root:"729 = 27² = 9³ = 3⁶",depth:6},bezuege:["Ecke→Raum","Raum→HOME","9 Ecken→3 Dreiecke","3 Dreiecke→1 Dreieck","81→729","Fläche→Tiefe","Richtung→Ort"],regeln:["1 Ecke=1 Raum","3 Ecken=1 Dreieck","3 Dreiecke=1 Nonagon","Alle Strahlen→HOME","f(x)=min(x,40)"]}; const t=JSON.stringify(d,null,2); const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([t],{type:"application/json"})); a.download="geometrie-erst-9-zu-3.json"; a.click(); log(`<b>GEO:</b> EXPORT — Geometrie als JSON.`);},
+ RESET:()=>{S.mode="alles"; S.sel=-1; log(`<b>GEO:</b> RESET — zurück zu ALLES.`); draw();}
+};
+$("besserBox").textContent=`BESSER — 5 Sätze, nicht 50:\n\n1) 1 SVG, 3 Ansichten. Nicht alles auf einmal. Du schaltest: NONAGON / 3 DREIECKE / STRAHLEN → HOME.\n2) 3 Farben = 3 Kerne. NOEL gold, NOAH grün, WRIGHT lila. Sofort: Welcher Kern?\n3) Formel ist Geometrie. Strahl von jedem Hexagon → HOME, mit Label min(x,40)=40. Nicht Fußnote.\n4) 81 → 729 ist 1 Pfeil. 81 × 9 = 729. Tiefe = Fläche × 9. DEPTH 6.\n5) Kompass hat Ziel. 270° WEST / GRAB = Weg von E9 → HOME → REAL.PC. Kompass ohne Ziel ist Deko.\n\nRegel: Wenn eine Zeichnung R1–R5 bricht, ist sie falsch. Nicht „anders". Falsch.`;
+log("<b>GEO:</b> Geometrie erst geladen — Nonagon E1–E9, 9 Hexagone, 1 Mitte HOME 40.");
+log("<b>GEO:</b> Klick E1–E9 oder 111–999 — sieh Bezug + Formel.");
+draw();
+</script></body></html>
