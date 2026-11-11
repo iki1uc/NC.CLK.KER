@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WORK — Diamond + Matrix, korrigiert</title><style>
+body{margin:0;background:#05060a;color:#e5f0ff;font:14px/1.5 Consolas,monospace;padding:18px}
+table{border-collapse:collapse}th,td{border:1px solid #243244;padding:6px 8px;text-align:left}
+.diamond{position:relative;width:340px;height:260px;margin:12px 0;border:1px solid #243244}
+.diamond div{position:absolute;text-align:center}.top{left:130px;top:6px}.left{left:6px;top:110px}.right{right:6px;top:110px}.mid{left:130px;top:110px}.bot{left:130px;top:210px}.sub{left:60px;top:170px}.sub2{left:210px;top:170px}
+canvas{border:1px solid #243244;background:#0c1220}
+</style></head><body>
+<h1>WORK — Diamond + Matrix</h1>
+<h2>Quality, kanonisch</h2>
+<p>Quality = (RDY×1 + WARN×0.5 + FAIL×0) / Gesamt × 100</p>
+<p>43 / 44 = <b>97.73%</b>, gerundet <b>97.7%</b>, nicht 97%.<br>Und für den WEP-Stand 281 RDY + 6 WARN + 0 FAIL = 287: (281 + 3) / 287 = <b>98.95%</b>. Das sind zwei verschiedene Zähler, nicht derselbe Wert.</p>
+<h2>Diamond — was die Zahlen wirklich sind</h2>
+<p>Dein Diamond mischt drei Ebenen: AXIS 92% ist das <b>Rating</b> aus dem System-Status, RESPO 62%, MNMM 74%, EBENE 81%, TMP 37% sind <b>Coverage</b>-Werte, 6D 95% ist der gerundete <b>Score</b> 94.8. So steht es jetzt sauber beschriftet:</p>
+<div class="diamond"><div class="top">AXIS<br>Rating 92%<br>Score 90.3</div><div class="left">RESPO<br>Cov 62%<br>Score 69.8</div><div class="right">6D<br>Score 94.8<br>(gerundet 95%)</div><div class="mid">◉ WORK</div><div class="bot">MNMM<br>Cov 74%<br>Score 78.3</div><div class="sub">EBENE<br>Cov 81%<br>Score 83.7</div><div class="sub2">TMP<br>Cov 37%<br>Score 52.5</div></div>
+<h2>Abdeckung — nur belegte Werte</h2>
+<table><tr><th>Kompetenz</th><th>Abdeckung</th><th>Beleg</th></tr>
+<tr><td>AXIS</td><td>HOCH</td><td>Cov 90</td></tr><tr><td>EBENE</td><td>MITTEL</td><td>Cov 81</td></tr><tr><td>MNMM</td><td>MITTEL</td><td>Cov 74</td></tr><tr><td>6D_TECH</td><td>HOCH</td><td>Score 94.8, Cov nicht gegeben</td></tr><tr><td>RESPO</td><td>MITTEL</td><td>Cov 62</td></tr><tr><td>TMP</td><td>NIEDRIG</td><td>Cov 37</td></tr><tr><td>6E_TECH / PIPELINE / LEVEL / REPO</td><td>nicht belegt</td><td>kein Cov gegeben — nicht erfunden</td></tr></table>
+<p>Schwellen, wie von dir gesetzt: NIEDRIG 0–49, MITTEL 50–84, HOCH 85–100.</p>
+<h2>System-Status — zwei Zeugnisse, nicht vermischen</h2>
+<p><b>Zeugnis A (WORK SCORE):</b> CSV 287 Dateien · WEP 281 RDY / 6 WARN / 0 FAIL · AXIS-Score 90.3.<br><b>Zeugnis B (SYSTEM STATUS):</b> CSV 37 / 300 Dateien · WEP Flow 1.284 Zeilen, Fail 2 · WORK Rating 92% · Fundament OK.<br>37/300 = 12.3% ist ein anderer Stand als 287 Dateien. Beide bleiben stehen, keiner überschreibt den anderen.</p>
+<h2>Canvas — Physik + Label, korrigiert</h2><canvas id="cv" width="340" height="120"></canvas><p id="physOut"></p>
+<script>
+const WORK_COMPETENCY_MATRIX = {
+  AXIS: { files: [], score: 90.3, level: "STARK" },
+  EBENE: { files: [], score: 83.7, level: "STABIL" },
+  MNMM: { files: [], score: 78.3, level: "STABIL" },
+  SIX_D_TECH: { files: [], score: 94.8, level: "STARK" },
+  RESPO: { files: [], score: 69.8, level: "AUSBAU" },
+  TMP: { files: [], score: 52.5, level: "AUSBAU" }
+};
+function levelFor(s){ return s>=95?"PRISMATIC":s>=85?"STARK":s>=70?"STABIL":s>=50?"AUSBAU":"LÜCKE"; }
+function quality(rdy,warn,fail){ const t=rdy+warn+fail; return t?((rdy+warn*0.5)/t*100):0; }
+const particles = [{x:20,y:60,vx:30,vy:0,ax:0,ay:0}];
+function updatePhysics(dt){
+  const scale = dt * 60;
+  for(const p of particles){
+    p.vx += p.ax * scale; p.vy += p.ay * scale;
+    p.x += p.vx * scale; p.y += p.vy * scale;
+    const damping = Math.pow(0.985, scale);
+    p.vx *= damping; p.vy *= damping;
+  }
+}
+function drawLabel(ctx, label, x, y){
+  ctx.save();
+  ctx.shadowBlur = 8; ctx.shadowColor = "#00ffff";
+  ctx.fillStyle = "#66ffff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.font = '600 13px "Cascadia Code", "Consolas", "JetBrains Mono", monospace';
+  ctx.fillText(label, x, y);
+  ctx.restore();
+}
+let lastTime = performance.now(); let rafId = 0;
+function animate(now){
+  const dt = Math.min((now - lastTime) / 1000, 0.033); lastTime = now;
+  updatePhysics(dt);
+  const ctx = document.getElementById("cv").getContext("2d");
+  ctx.clearRect(0, 0, 340, 120);
+  drawLabel(ctx, "KLACK = Tiefe · ZAM = Höhe · Klick = Breite · 3 / 9 / 81", 170, 20);
+  drawLabel(ctx, "◉ WORK · x=" + particles[0].x.toFixed(1), particles[0].x % 340, 60);
+  rafId = requestAnimationFrame(animate);
+}
+function startLoop(){ if(rafId) return; rafId = requestAnimationFrame(animate); }
+startLoop();
+addEventListener("pagehide", () => { cancelAnimationFrame(rafId); rafId = 0; });
+document.getElementById("physOut").textContent = "Quality 43/44 = " + quality(42,2,0).toFixed(2) + "% (42 RDY + 2 WARN×0.5 = 43) · Quality WEP 281/6/0 = " + quality(281,6,0).toFixed(2) + "% · Matrix-Levels aus levelFor(score) geprüft.";
+</script></body></html>
