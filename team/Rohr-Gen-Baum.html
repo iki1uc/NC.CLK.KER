@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROHR — Gen-Baum der ganzen Unterhaltung</title><style>
+body{margin:0;background:#05060a;color:#e5f0ff;font:14px/1.5 Consolas,monospace;padding:18px}
+a{color:#00e5ff}.card{border:1px solid #243244;border-radius:12px;padding:14px;margin:12px 0;background:#0c1220}
+.penta{font-size:15px;line-height:1.2}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+button{padding:8px 14px;background:#15233b;color:#fff;border:1px solid #243244;border-radius:8px;cursor:pointer}
+#calcOut,#mirrorOut,#liveOut{white-space:pre-wrap;color:#9edaff}
+</style></head><body>
+<h1>ROHR — Gen-Baum</h1>
+<p>1 Rohr, 9 Seiten, 3 Plug-ins. Alt bleibt Zeugnis. Neu steht daneben. Nichts gelöscht, nur angehängt.</p>
+<div class="card"><h2>Gen-Baum: 3 → 9 → 81 → 729</h2><p>
+DU ↓ NC ↓ 81 ↓ SYSTEM ↓ Ω<br>
+REAL ↓ BIO ↓ NC ↓ SYSTEM ↓ INDEX ↓ DASHBOARD ↓ Ω<br>
+3 → 9 → 81 → 243 → 729 → 756 → 2268 → 19683</p>
+<p class="penta">Pentagramm: 5 Chips — oben · rechts oben · rechts unten · unten · links oben (so wie du es geschrieben hast, nicht korrigiert)<br>
+Prismatikum: yxyxyxy — X = FORM / Struktur · Y = ENERGIE / Zustand · Z = NUTZUNG / Nutzraum</p></div>
+<div class="card"><h2>Die 9 Seiten</h2><div class="grid">
+<div><b>1 · CALC-00</b><br>27 / 243 / 729 · Selbsttest · Plug-in <code>plugins/calc00.js</code></div>
+<div><b>2 · MIRROR</b><br>9 Debug-Zeilen · nur lesen · <code>plugins/mirror9.js</code></div>
+<div><b>3 · LIVE</b><br>3 Kernwerte · nur lesen · <code>plugins/live3.js</code></div>
+<div><b>4 · INDEX</b><br><a href="index.html">index.html</a> — 1 Index für alle</div>
+<div><b>5 · BUND</b><br><a href="bund-neu.html">bund-neu.html</a> — Lage / Lagerbarkeit</div>
+<div><b>6 · ÖKONOMIE</b><br><a href="oekonomie.html">oekonomie.html</a> — V2</div>
+<div><b>7 · OS</b><br><a href="os.html">os.html</a> — ZONE / STATION / FIGUR</div>
+<div><b>8 · DASHBOARD 81</b><br><a href="omega81-dashboard.html">omega81-dashboard.html</a> — 81 Namen</div>
+<div><b>9 · WORK</b><br><a href="work-score.html">work-score.html</a> + <a href="work-diamond-matrix.html">work-diamond-matrix.html</a></div>
+</div></div>
+<div class="card"><h2>Rohr-Test: Plug-ins laufen wirklich</h2><p><button id="runCalc">CALC Selbsttest laufen lassen</button></p><p id="calcOut">Noch nicht gelaufen.</p>
+<p><b>MIRROR (9):</b></p><p id="mirrorOut">Noch nicht gelesen.</p><p><b>LIVE (3):</b></p><p id="liveOut">Noch nicht gelesen.</p></div>
+<script type="module">
+import { CALC, selbsttest, selbsttestSumme } from "./plugins/calc00.js";
+import { KEYS as MKEYS, lesen as mirrorLesen, slotPruefen } from "./plugins/mirror9.js";
+import { zustandPruefen } from "./plugins/live3.js";
+const $ = id => document.getElementById(id);
+$("runCalc").onclick = () => {
+  const erg = selbsttest(CALC);
+  const s = selbsttestSumme(erg);
+  $("calcOut").textContent = "CALC-00 Selbsttest: " + s.bestanden + " von " + s.gesamt + " Prüfungen bestanden — " + (s.bestanden===s.gesamt ? "bereit" : "fehler") + "\nANKER: nur CALC geprüft, IQ / QI / EVO / UPD / UPG / BIOS nicht geprüft (kein Code dafür in dieser Seite).";
+};
+function rohrLesen(){
+  const m = mirrorLesen();
+  const slot = slotPruefen(m.roh.cube_active ?? null);
+  const zustand = zustandPruefen(m.roh.cube_error_state ?? null, m.lesbar, m.vorhanden);
+  $("mirrorOut").textContent = "MIRROR 9: Slot " + slot.text + " · Zustand " + zustand[0] + " · Schlüssel " + m.vorhanden.length + " von " + MKEYS.length + " · lesbar: " + m.lesbar;
+  $("liveOut").textContent = "LIVE 3: Slot " + slot.text + " · Zustand " + zustand[0] + " · Fehler " + (m.roh.cube_error_count ?? "–") + " · " + (m.roh.cube_error_duration ?? "–") + " s";
+}
+rohrLesen();
+window.addEventListener("storage", e => { if(e.key===null || MKEYS.includes(e.key)) rohrLesen(); });
+setInterval(rohrLesen, 1000);
+</script></body></html>
