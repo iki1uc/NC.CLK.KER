@@ -1,0 +1,43 @@
+// GEN-FLOW-CONTROLLER
+const GEN = {
+    step: "3",
+    coverage: 42,
+    status: "stable",
+
+    update() {
+        this.step = this.nextStep(this.step);
+        this.coverage = this.calcCoverage();
+        this.status = this.calcStatus();
+
+        this.updateUI();
+    },
+
+    nextStep(step) {
+        const seq = ["3","QI","9","IQQ","81","PIPE9","756","27","81.tmp","3"];
+        const idx = seq.indexOf(step);
+        return seq[(idx + 1) % seq.length];
+    },
+
+    calcCoverage() {
+        return 42 + Math.sin(Date.now()/1000)*5;
+    },
+
+    calcStatus() {
+        return this.step === "PIPE9" ? "checking" : "stable";
+    },
+
+    updateUI() {
+        document.getElementById("gen-status").textContent =
+            `🔄 Kohärenz: ${this.coverage.toFixed(1)}%`;
+
+        document.querySelectorAll("#gen-cycle .node")
+            .forEach(n => n.classList.remove("active"));
+
+        const active = [...document.querySelectorAll("#gen-cycle .node")]
+            .find(n => n.textContent === this.step);
+
+        if (active) active.classList.add("active");
+    }
+};
+
+setInterval(() => GEN.update(), 500);

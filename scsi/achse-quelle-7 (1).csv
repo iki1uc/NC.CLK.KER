@@ -1,0 +1,8 @@
+﻿Achse,Quelle,Funktion,Pipeline‑Beziehung
+3,achse‑zahl‑3.csv,Grundachse,PIPEBUILD
+4,mechanismus‑zweck‑4.csv,Zweck,PIPEBUILD
+6,axiom‑dreieck‑6.csv,Dreieck,PIPEBUILD
+7,RESPO,Transit,RESPO‑Motor
+27,Build‑Wurzel,Struktur,PIPEBUILD
+81,tmp‑Achse,Tiefenlast,81.tmp
+756,Wurzel,Startlast,PIPELINE9
