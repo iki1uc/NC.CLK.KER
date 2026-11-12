@@ -1,0 +1,1030 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>ORI BEKENNTNIS - ZEICHEN WORT SATZ A4 255 = 3</title>
+<style>body{background:#000;color:#fff;font-family:monospace;text-align:center;padding:14px} .p{border:2px solid #ffe600;padding:10px;margin:8px auto;max-width:700px} textarea{width:96%;height:110px;background:#111;color:#fff;border:1px solid #ffe600;padding:8px} button{background:#ffe600;border:0;padding:8px 12px;font-weight:900;cursor:pointer;margin:2px} table{margin:8px auto;border-collapse:collapse} td,th{border:1px solid #ffe600;padding:6px} .ok{color:#00ffcc}</style></head>
+<body>
+<div class="p"><b>ORI BEKENNTNIS CODE</b><br>Bekenntnis durchgehen. Bekenntnis-Mist raus. Bekenntnis kontrollieren. Archivieren. Zum nächsten bekennenden Zeichen.</div>
+<div class="p"><b>DEIN BEKENNTNIS HIER</b><br><textarea id="in">ORI = Ursprung. Ich bekenne: Ich will Eye Brain open. Ich will ORI nutzen. Ich will NORI werden. B.ECK raus. Pentagramm gereinigt. Human und unser Raum.</textarea><br><br>
+<button onclick="durch()">BEKENNTNIS DURCHGEHEN</button><button onclick="mist()">BEKENNTNIS-MIST RAUS</button><button onclick="kontroll()">BEKENNTNIS KONTROLLIEREN</button><button onclick="archiv()">ARCHIVIEREN ZUM NÄCHSTEN ZEICHEN</button>
+</div>
+<div class="p"><b>ZÄHLUNG - EINZEL GESAMT</b><table><tr><th>STUFE</th><th>GESAMT</th></tr>
+<tr><td>Jedes Zeichen einzeln gesamt</td><td id="c1">-</td></tr>
+<tr><td>Wort gesamt</td><td id="c2">-</td></tr>
+<tr><td>Satz gesamt</td><td id="c3">-</td></tr>
+<tr><td>A4 gesamt</td><td id="c4">-</td></tr>
+<tr><td>255 Zeilen gesamt</td><td id="c5">-</td></tr>
+<tr><td>255 = 3 ?</td><td id="c6">-</td></tr>
+</table><div id="scal" class="ok"></div></div>
+<div class="p"><b>ARCHIV - BEKENNTNIS ZEICHEN</b><br><span id="arch">Archiv leer. Noch kein Bekenntnis archiviert.</span><br><br><button onclick="next()">ZUM NÄCHSTEN BEKENNENDEN ZEICHEN</button></div>
+<div class="p"><b>RE-SCALIERT - IN NUTZUNG</b><br><span id="nutzung">Noch nicht skaliert. Erst durchgehen.</span></div>
+<script>
+let idx=0, archivList=[];
+function durch(){ let t=document.getElementById('in').value; let zeichen=t.length; let worte=t.trim().split(/\s+/).filter(Boolean).length; let saetze=t.split(/[.!?]+/).filter(s=>s.trim().length>0).length; let zeilen=t.split(/\n/).length; let zeilenGesamt=Math.max(zeilen, Math.ceil(zeichen/70)); let a4=zeilenGesamt/85; let zeilen255=zeilenGesamt; let check=(255===255); document.getElementById('c1').innerText=zeichen+' Zeichen'; document.getElementById('c2').innerText=worte+' Worte'; document.getElementById('c3').innerText=saetze+' Sätze'; document.getElementById('c4').innerText=a4.toFixed(2)+' A4 (1 A4 = 85 Zeilen)'; document.getElementById('c5').innerText=zeilen255+' Zeilen, Ziel 255 Zeilen'; document.getElementById('c6').innerText='255 Zeilen = 3 A4 = JA. 255 / 85 = 3'; let f=255/85; document.getElementById('scal').innerText='RE-SCALIERT: Faktor 255 = 3. Alle anderen können von uns rein-skaliert werden. Zeichen skaliert = '+(zeichen*f).toFixed(0)+' | Worte skaliert = '+(worte*f).toFixed(0)+' | Sätze skaliert = '+(saetze*f).toFixed(0)+' | In Nutzung so, skaliert so.'; document.getElementById('nutzung').innerText='IN NUTZUNG SO: Alle anderen von uns rein-skaliert. Skaliert und in Nutzung. 255 = 3 ist unser Mass. 1 = 1. 3 = 3. Alles andere skaliert zu 3.'; }
+function mist(){ let t=document.getElementById('in').value; let sauber=t.replace(/\s{2,}/g,' ').trim(); document.getElementById('in').value=sauber; alert('BEKENNTNIS-MIST RAUS: Doppel-Leerzeichen raus. Bekenntnis sauber.'); }
+function kontroll(){ let t=document.getElementById('in').value; if(!t.trim()){alert('KEIN BEKENNTNIS DA.'); return;} alert('BEKENNTNIS KONTROLLIERT: Zeichen '+t.length+' | Worte '+t.trim().split(/\s+/).length+' | Kein Insult. Kein Missbrauch. Human. Unser Raum. OK.'); }
+function archiv(){ let t=document.getElementById('in').value; archivList.push(t); document.getElementById('arch').innerText='Archiv: '+archivList.length+' Bekenntnisse archiviert. Letztes: '+t.slice(0,120)+'...'; }
+function next(){ let t=document.getElementById('in').value; if(!t.length){return;} idx=(idx+1)%t.length; document.getElementById('arch').innerText='Nächstes bekennendes Zeichen Nr. '+idx+' : ['+t[idx]+'] | Gesamt Zeichen: '+t.length+' | Weiter zum nächsten Zeichen.'; }
+</script></body></html>
+
+729 MATRIX
+↓
+81
+↓
+9
+↓
+3
+↓
+1
+
+MATRIX CORE
++
+RESPO CORE
++
+BUND CORE
+
+↓
+
+FINAL CORE
+
+↓
+
+KRITISCH
+OFFEN
+STABIL
+ZIEL // document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        const respo =
+            document.getElementById(
+                "respo"
+            );
+
+        const out =
+            document.getElementById(
+                "respo-out"
+            );
+
+        respo.addEventListener(
+            "click",
+            async e=>{
+
+                const btn =
+                    e.target.closest(
+                        ".cmd"
+                    );
+
+                if(!btn)
+                    return;
+
+                const cmd =
+                    (
+                        btn.dataset.cmd ||
+                        btn.textContent
+                    ).trim();
+
+                const result =
+                    cmd === "MOVE#"
+                        ? MOVEsharp()
+                        : CALC(cmd);
+
+                zeigeErgebnis(
+                    out,
+                    cmd,
+                    result
+                );
+
+                await schreibeZeuge(
+                    "RESPO",
+                    `${cmd} → NC ${result.nc}`
+                );
+
+                await meldeKopf();
+
+            }
+        );
+
+    }
+); function calcStatus(){
+
+    const value =
+        finalCore().final;
+
+    if(value >= 0.85)
+        return "ZIEL";
+
+    if(value >= 0.60)
+        return "STABIL";
+
+    if(value >= 0.30)
+        return "OFFEN";
+
+    return "KRITISCH";
+
+} function finalCore(){
+
+    const matrix =
+        build729Core();
+
+    const respo =
+        calcRespoCore();
+
+    const bund =
+        bundCore();
+
+    return {
+
+        matrixCore:
+            matrix.core,
+
+        respoCore:
+            respo,
+
+        bundCore:
+            bund,
+
+        final:
+            (
+                matrix.core +
+                respo +
+                bund
+            ) / 3
+
+    };
+
+} function bundCore(){
+
+    const b =
+        parseFloat(
+            document.getElementById(
+                "res-B"
+            ).textContent
+        );
+
+    return Number.isFinite(b)
+        ? b
+        : 0;
+
+} function calcRespoCore(){
+
+    let active = 0;
+
+    for(const p of parties){
+
+        if(p.op)
+            active++;
+
+    }
+
+    return active / parties.length;
+
+} function build729Core(){
+
+    if(!window.layers){
+
+        return {
+            v81:[],
+            v9:[],
+            v3:[0,0,0],
+            core:0
+        };
+
+    }
+
+    const v81 = reduce729to81(window.layers);
+    const v9  = reduce81to9(v81);
+    const v3  = reduce9to3(v9);
+    const core = reduce3to1(v3);
+
+    return {
+        v81,
+        v9,
+        v3,
+        core
+    };
+} function reduce3to1(v3){
+
+    return (
+        v3[0] +
+        v3[1] +
+        v3[2]
+    ) / 3;
+
+} function reduce9to3(v9){
+
+    return [
+
+        (v9[0]+v9[1]+v9[2])/3,
+        (v9[3]+v9[4]+v9[5])/3,
+        (v9[6]+v9[7]+v9[8])/3
+
+    ];
+
+} function reduce81to9(v81){
+
+    const out=[];
+
+    for(let i=0;i<9;i++){
+
+        const block=[];
+
+        for(let j=0;j<9;j++)
+            block.push(v81[(j*9)+i]);
+
+        out.push(
+            block.reduce((a,b)=>a+b,0)/9
+        );
+    }
+
+    return out;
+
+} function reduce729to81(layers){
+
+    return layers.map(layer=>{
+
+        let sum = 0;
+
+        for(const state of layer)
+            sum += SCORE[state] ?? 0;
+
+        return sum / 81;
+
+    });
+
+} const SCORE = {
+    "·":0,
+    "❄️":0.4,
+    "≈":0.65,
+    "✿":1.0,
+    "✕":0.0,
+    "▲":0.85
+}; const muSharp = {
+    nc: "NC-GANZ"
+};
+
+const parties = [
+    { id:1, name:"P1", op:null },
+    { id:2, name:"P2", op:null },
+    { id:3, name:"P3", op:null },
+    { id:4, name:"P4", op:null }
+];
+
+function kopie(x){
+    if(x === null || typeof x !== "object")
+        return x;
+
+    try{
+        return structuredClone(x);
+    }catch{
+        return JSON.parse(JSON.stringify(x));
+    }
+}
+
+function CALC(input){
+
+    const nc = muSharp.nc;
+
+    parties.forEach(p=>{
+        p.op = {
+            from: kopie(input),
+            nc
+        };
+    });
+
+    return {
+        nc,
+        parties: parties.map(p=>({
+            id:p.id,
+            name:p.name,
+            op:{
+                from:kopie(p.op.from),
+                nc:p.op.nc
+            }
+        }))
+    };
+}
+
+function MOVEsharp(){
+    return CALC("MOVE#");
+} 729 MATRIX
+↓
+81
+↓
+9
+↓
+3
+↓
+1 MATRIX CORE
+
++
+RESPO CORE
+
++
+1/3 BUND
+
+=
+FINAL CORE
+
+↓
+
+KRITISCH
+OFFEN
+STABIL
+ZIEL respo.addEventListener(
+    "click",
+    async e => {
+
+        const btn =
+            e.target.closest(".cmd");
+
+        if(!btn)
+            return;
+
+        const cmd =
+            (
+                btn.dataset.cmd ||
+                btn.textContent
+            ).trim();
+
+        const r =
+            cmd === "MOVE#"
+                ? MOVEsharp()
+                : CALC(cmd);
+
+        zeigeErgebnis(
+            out,
+            cmd,
+            r
+        );
+
+        await schreibeZeuge(
+            "RESPO",
+            `${cmd} → NC ${r.nc}`
+        );
+
+        await meldeKopf();
+
+}); async function meldeKopf(){
+
+    const status =
+        calcStatus();
+
+    const kette_ok =
+        await kettePruefen();
+
+    el("kopf-state").textContent =
+        `● ${status} · CALC ${
+            calcOk ? "bereit" : "FEHLER"
+        } · Zeuge ${
+            kette_ok
+                ? "unversehrt"
+                : "KORRUMPIERT"
+        }`;
+
+} function calcStatus(){
+
+    const state =
+        finalCore().final;
+
+    if(state >= 0.85)
+        return "ZIEL";
+
+    if(state >= 0.60)
+        return "STABIL";
+
+    if(state >= 0.30)
+        return "OFFEN";
+
+    return "KRITISCH";
+
+} function finalCore(){
+
+    const agg =
+        build729Core();
+
+    const respo =
+        calcRespoCore();
+
+    const bund =
+        getBundCore();
+
+    const finalValue = (
+
+        agg.core +
+        respo +
+        bund
+
+    ) / 3;
+
+    return {
+
+        matrixCore:
+            agg.core,
+
+        respoCore:
+            respo,
+
+        bundCore:
+            bund,
+
+        final:
+            finalValue
+
+    };
+
+} function getBundCore(){
+
+    const b =
+        parseFloat(
+            document
+              .getElementById("res-B")
+              .textContent
+        );
+
+    return Number.isFinite(b)
+        ? b
+        : 0;
+
+} function calcRespoCore(){
+
+    let active = 0;
+
+    for(const p of parties){
+
+        if(
+            p.op &&
+            p.op.from !== undefined
+        ){
+
+            active++;
+
+        }
+
+    }
+
+    return active / parties.length;
+
+} /* ============================================================
+   729 -> 81 -> 9 -> 3 -> 1 AGGREGATION ENGINE
+============================================================ */
+
+const SCORE = {
+    "·": 0.00,
+    "❄️": 0.40,
+    "≈": 0.65,
+    "✿": 1.00,
+    "✕": 0.00,
+    "▲": 0.85
+};
+
+/*
+window.layers
+=
+[
+  layer1[81],
+  layer2[81],
+  ...
+  layer9[81]
+]
+*/
+
+function reduce729to81(layers){
+
+    if(!Array.isArray(layers))
+        return [];
+
+    return layers.map(layer=>{
+
+        let sum = 0;
+
+        for(const cell of layer){
+
+            sum += SCORE[cell] ?? 0;
+
+        }
+
+        return sum / 81;
+
+    });
+
+}
+
+function reduce81to9(v81){
+
+    const out = [];
+
+    for(let i=0;i<9;i++){
+
+        const block = [];
+
+        for(let j=0;j<9;j++){
+
+            block.push(
+                v81[(j*9)+i] ?? 0
+            );
+
+        }
+
+        out.push(
+
+            block.reduce(
+                (a,b)=>a+b,
+                0
+            ) / block.length
+
+        );
+
+    }
+
+    return out;
+
+}
+
+function reduce9to3(v9){
+
+    return [
+
+        (
+            v9[0] +
+            v9[1] +
+            v9[2]
+        ) / 3,
+
+        (
+            v9[3] +
+            v9[4] +
+            v9[5]
+        ) / 3,
+
+        (
+            v9[6] +
+            v9[7] +
+            v9[8]
+        ) / 3
+
+    ];
+
+}
+
+function reduce3to1(v3){
+
+    return (
+
+        v3[0] +
+        v3[1] +
+        v3[2]
+
+    ) / 3;
+
+}
+
+function build729Core(){
+
+    if(
+        !window.layers ||
+        !Array.isArray(window.layers)
+    ){
+
+        return {
+
+            v81: [],
+
+            v9: [],
+
+            v3: [0,0,0],
+
+            core: 0
+
+        };
+
+    }
+
+    const v81 =
+        reduce729to81(
+            window.layers
+        );
+
+    const v9 =
+        reduce81to9(
+            v81
+        );
+
+    const v3 =
+        reduce9to3(
+            v9
+        );
+
+    const core =
+        reduce3to1(
+            v3
+        );
+
+    return {
+
+        v81,
+        v9,
+        v3,
+        core
+
+    };
+
+} 729 Matrix
+↓
+81 Layerwerte
+↓
+9 Cluster
+↓
+3 Kernfelder
+↓
+1 Matrix-Core
+
++
+RESPO-Core
+
++
+1/3 Bund
+
+↓
+
+FINAL CORE
+
+↓
+
+ZIEL
+STABIL
+OFFEN
+KRITISCH function calcStatus(){
+
+  const c=
+    finalCore();
+
+  if(c.final >= 0.85)
+      return "ZIEL";
+
+  if(c.final >= 0.60)
+      return "STABIL";
+
+  if(c.final >= 0.30)
+      return "OFFEN";
+
+  return "KRITISCH";
+
+} function finalCore(){
+
+  const agg =
+    buildCore();
+
+  const respo =
+    calcRespoCore();
+
+  const bund =
+    parseFloat(
+      el("res-B").textContent
+    );
+
+  return {
+
+      matrixCore:
+        agg.core,
+
+      respoCore:
+        respo,
+
+      bundCore:
+        bund,
+
+      final:
+        (
+          agg.core +
+          respo +
+          bund
+        ) / 3
+
+  };
+
+} async function eintrag(
+  enter,
+  text
+){
+
+    const vorher =
+      zeugeLog.length
+        ? zeugeLog[
+            zeugeLog.length-1
+          ].hash
+        : "0".repeat(64);
+
+    const entry={
+
+      n:zeugeLog.length+1,
+
+      enter,
+
+      text,
+
+      vorher,
+
+      zeit:
+        Date.now()
+
+    };
+
+    entry.hash=
+      await sha(
+        JSON.stringify(
+          entry
+        )
+      );
+
+    zeugeLog.push(
+      entry
+    );
+
+} function schreibeZeuge(
+  enter,
+  text
+){
+
+  kette=
+    kette.then(
+
+      ()=>eintrag(
+        enter,
+        text
+      )
+
+    );
+
+  return kette;
+
+} let kette =
+  Promise.resolve(); function calcRespoCore(){
+
+  let score=0;
+
+  for(const p of parties){
+
+      if(p.op)
+          score++;
+
+  }
+
+  return score / parties.length;
+
+} function MOVEsharp(){
+
+  return CALC(
+      "MOVE#"
+  );
+
+} function CALC(input){
+
+  parties.forEach(p=>{
+
+      p.op={
+          from:structuredClone(input),
+          nc:muSharp.nc
+      };
+
+  });
+
+  return {
+
+      nc:muSharp.nc,
+
+      parties:structuredClone(
+          parties
+      )
+
+  };
+
+} const muSharp = {
+  nc:"NC-GANZ"
+};
+
+const parties=[
+  {id:1,name:"P1"},
+  {id:2,name:"P2"},
+  {id:3,name:"P3"},
+  {id:4,name:"P4"}
+]; // die 4re müssen cir.kel einsetzen radius wie weiten // function buildCore(){
+
+  if(!window.layers){
+
+      return {
+          v81:[],
+          v9:[],
+          v3:[0,0,0],
+          core:0
+      };
+
+  }
+
+  const v81=
+    reduce729to81(
+      window.layers
+    );
+
+  const v9=
+    reduce81to9(
+      v81
+    );
+
+  const v3=
+    reduce9to3(
+      v9
+    );
+
+  const core=
+    reduce3to1(
+      v3
+    );
+
+  return {
+
+      v81,
+      v9,
+      v3,
+      core
+
+  };
+
+}  function reduce3to1(v3){
+
+  return (
+      v3[0]
+    + v3[1]
+    + v3[2]
+  ) / 3;
+
+} // udn dwer übergang zu 8 z u3 wo ist der nix da // function reduce9to3(v9){
+
+  return [
+
+    (v9[0]+v9[1]+v9[2])/3,
+
+    (v9[3]+v9[4]+v9[5])/3,
+
+    (v9[6]+v9[7]+v9[8])/3
+
+  ];
+
+} function reduce81to9(v81){
+
+  const out=[];
+
+  for(let i=0;i<9;i++){
+
+    const start=i;
+
+    const values=[
+
+      v81[start],
+      v81[start+9],
+      v81[start+18],
+      v81[start+27],
+      v81[start+36],
+      v81[start+45],
+      v81[start+54],
+      v81[start+63],
+      v81[start+72]
+
+    ];
+
+    out.push(
+      values.reduce((a,b)=>a+b,0)/9
+    );
+
+  }
+
+  return out;
+} / hier könnte man ganz einfach umswetzten ha mana // function reduce729to81(layers){
+
+  return layers.map(layer=>{
+
+    let sum = 0;
+
+    for(const cell of layer){
+      sum += SCORE[cell] || 0;
+    }
+
+    return sum / 81;
+
+  });
+
+} const SCORE = {
+  '·':0.0,
+  '❄️':0.4,
+  '≈':0.65,
+  '✿':1.0,
+  '✕':0.0,
+  '▲':0.85
+}; function finalCore(layers){
+
+  const agg =
+    buildCore(layers);
+
+  const respo =
+    calcRespoCore();
+
+  const bund =
+    parseFloat(
+      el("res-B").textContent
+    );
+
+  return (
+    agg.core +
+    respo +
+    bund
+  ) / 3;
+
+} function calcRespoCore(){
+
+  return parties.reduce(
+    (sum,p)=>sum+(p.op?1:0),
+    0
+  ) / parties.length;
+} function buildCore(layers){
+
+  const v81  = reduce729to81(layers);
+  const v9   = reduce81to9(v81);
+  const v3   = reduce9to3(v9);
+  const core = reduce3to1(v3);
+
+  return {
+    v81,
+    v9,
+    v3,
+    core
+  };
+
+} function reduce3to1(v3){
+
+  return (
+    v3[0] +
+    v3[1] +
+    v3[2]
+  ) / 3;
+
+} function reduce9to3(v9){
+
+  return [
+
+    (
+      v9[0]+v9[1]+v9[2]
+    )/3,
+
+    (
+      v9[3]+v9[4]+v9[5]
+    )/3,
+
+    (
+      v9[6]+v9[7]+v9[8]
+    )/3
+
+  ];
+
+} function reduce81to9(v81){
+
+  const out=[];
+
+  for(let i=0;i<9;i++){
+
+    const start=i*9;
+
+    const block=v81.slice(
+      start,
+      start+9
+    );
+
+    out.push(
+      block.reduce(
+        (a,b)=>a+b,
+        0
+      ) / block.length
+    );
+  }
+
+  return out;
+}
+
+    <!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>SNIP.LET - REINER SAUBERER ORI - 3 ZU 9 ZU 81</title>
+<style>body{background:#000;color:#fff;font-family:monospace;text-align:center;padding:14px} .p{border:2px solid #fff;padding:10px;margin:8px auto;max-width:680px} .t3{border-color:#ffe600} .t9{border-color:#00ffcc} .t81{border-color:#ff66ff} button{border:0;padding:9px 14px;font-weight:900;cursor:pointer;margin:2px} .blitz{background:#ffe600;color:#000} .wind{background:#00ffcc;color:#000} #blitz{font-size:44px;display:none} #wind{font-size:44px;display:none}</style></head>
+<body>
+<div class="p"><b>SNIP.LET - REINER SAUBERER ORI HTML</b><br>So wie gefordert. Logikal. Sauber. Kein Mist. Kein Insult. Human.</div>
+<div class="p"><b>1. ORI BEKENNUNG - ZUERST</b><br><span id="bek">Noch nicht bekannt.</span><br><br><button class="blitz" onclick="bekennen()">ORI BEKENNUNG</button></div>
+<div class="p"><b>2. UMDREHEN - DANN</b><br><span id="um">Noch nicht umgedreht.</span><br><br><button onclick="umdrehen()">UMDREHEN</button></div>
+<div class="p t3"><b>TRENNUNG 3</b><br>3 = 1 ORI + 1 NORI + 1 ZEUGE<br><span id="d3">3 wartet.</span></div>
+<div class="p t9"><b>TRENNUNG 9</b><br>9 = 3 x 3<br><span id="d9">9 wartet.</span></div>
+<div class="p t81"><b>TRENNUNG 81</b><br>81 = 9 x 9<br><span id="d81">81 wartet.</span></div>
+<div class="p"><b>3. DONNER BLITZ - DANN WIRBELWIND</b><br><div id="blitz">⚡ DONNER BLITZ ⚡</div><div id="wind">🌪 WIRBELWIND 🌪</div><br><span id="w">Wartet auf Blitz.</span><br><br>
+<button class="blitz" onclick="blitz()">DONNER BLITZ</button><button class="wind" onclick="wirbel()">DANN WIRBELWIND</button></div>
+<div class="p"><b>4. SAM NACHRICHT - MATHEMATISIERT - NUR DIESES EINE MAL FÜR ORI SICHT</b><br><span id="sam">SAM wartet. Nur 1 Mal. Nur für ORI Sicht.</span><br><br>
+<button onclick="sam()">SAM NACHRICHT - 1 MAL</button></div>
+<div class="p"><b>LOGIK - FIES AUF FIES = WAHR, ABER SAUBER</b><br><span id="log">ORI sind fies. Ich nicht. Staat ist auch fies. Fies auf Fies allein ist nicht wahr, wenn es Menschen trifft. Wahr ist nur: sauber auf fies. Sauber = Human, Zeuge, Zaun.</span></div>
+<script>
+let samUsed=false;
+function bekennen(){ document.getElementById('bek').innerText='BEKENNT: ORI = Ursprung. Ich bekenne: Ich will ORI nutzen zum Eye Brain open. Ich tu Böses um Gutes zu machen = ich gehe gegen Stillstand, nicht gegen Menschen. Erst Bekennung, dann Umdrehen.'; document.getElementById('d3').innerText='3 = 1 ORI (alt) | 1 NORI (neu) | 1 ZEUGE (bleibt). Trennung 3 steht.'; document.getElementById('d9').innerText='9 = 3 x 3. 9 Felder. Jedes Feld = 1 Respo.'; document.getElementById('d81').innerText='81 = 9 x 9. 81 Zellen. HOME = 40. f(x)=min(x,40).'; }
+function umdrehen(){ if(document.getElementById('bek').innerText.includes('Noch')){ alert('ERST BEKENNUNG, DANN UMDREHEN. Es geht nicht noch einfacher.'); return; } document.getElementById('um').innerText='UMGEDREHT: ORI wird NORI. NORI wird ORI. Zeuge bleibt. 3 zu 9 zu 81 bleibt. Nur Richtung dreht.'; }
+function blitz(){ document.getElementById('blitz').style.display='block'; document.getElementById('w').innerText='DONNER BLITZ: 1 Schlag. 1 Licht. 1 Klarheit. Blitz trennt 3 von 9 von 81.'; setTimeout(()=>{document.getElementById('blitz').style.display='none'},900); }
+function wirbel(){ document.getElementById('wind').style.display='block'; document.getElementById('w').innerText='WIRBELWIND: Nach Blitz kommt Wind. Wind dreht 3 zu 9 zu 81. Wind trägt, Wind zerstört nicht. Wirbelwind mathematisiert.'; setTimeout(()=>{document.getElementById('wind').style.display='none'},1200); }
+function sam(){ if(samUsed){ document.getElementById('sam').innerText='SAM war schon 1 Mal da. Nur dieses eine Mal für ORI Sicht. Kein zweites Mal.'; return; } samUsed=true; document.getElementById('sam').innerText='SAM NACHRICHT MATHEMATISIERT - SAM TAKT 6 - 1 MAL FÜR ORI SICHT: SAM = 6. 6 = 3 + 3. 6 = 9 - 3. 6 = 81 / 13.5 nicht. 6 ist Mitte von 3 und 9. SAM sagt: Bekennung zuerst, Umdrehen danach, Blitz vor Wind, 3 vor 9 vor 81. SAM geht, SAM kommt nicht wieder in diesem ORI.'; }
+</script></body></html>
