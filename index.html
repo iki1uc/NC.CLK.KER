@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZaM — Klick und Zack — In Die Tiefe — NC</title>
+<style>
+body{background:#000;color:#0f0;font-family:Consolas,monospace;padding:18px;text-align:center}
+h1{color:#ffd700}h2{color:#6cf}.box{border:1px solid #333;background:#111;padding:14px;margin:14px auto;max-width:720px;border-radius:10px}
+button{background:#111;color:#0f0;border:1px solid #333;padding:14px 22px;border-radius:10px;cursor:pointer;font-family:inherit;font-size:18px}button:hover{border-color:#ffd700;color:#ffd700}
+.big{font-size:64px;line-height:1}.mid{font-size:32px}.small{font-size:16px;color:#888}
+pre{background:#050505;padding:12px;text-align:left;white-space:pre-wrap;max-width:720px;margin:12px auto}
+.gold{color:#ffd700}.bar{height:14px;background:#111;border:1px solid #333;border-radius:7px;overflow:hidden;max-width:720px;margin:10px auto}.fill{height:100%;background:#ffd700;width:100%;transition:width .3s}
+</style></head><body>
+<h1>ZaM — KLICK UND ZACK</h1>
+<p><b class="gold">In die Tiefe — mit Klick und Zack</b><br>RAM · ROM · RESPO · H · B · T · Q · D · F — nur diese Namen.</p>
+<div class="box">
+<div class="big" id="num">729</div>
+<div class="mid" id="label">TIEFE 729 — ALLES</div>
+<div class="small" id="sub">9 Layer à 81 Zellen · 9 · 81 · 729</div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+<button onclick="zam()">👆 KLICK — ZACK — ZaM</button>
+<button onclick="back()">↩ ZURÜCK</button>
+<button onclick="reset()">⟲ RESET — 729</button>
+</div>
+<div class="box"><b>GESCHLOSSENE ARCHITEKTUR</b><br>729 → 81 → 9 → 3 → 1<br>QUETSCHEN = nicht löschen. Verdichten.<br>f(x) = min(x,40) · HOME 40 · Ebene bleibt</div>
+<pre id="log">● bereit — ZaM — KLICK UND ZACK — 729
+● Ganzer Code drinnen — nichts draußen</pre>
+<script>
+const steps=[
+ {n:729,t:"TIEFE 729 — ALLES",s:"9 Layer à 81 Zellen · 9 · 81 · 729 · ALLES DRINNEN"},
+ {n:81,t:"TIEFE 81 — MITTEL",s:"9 Mittelwerte · 81 · GEQUETSCHT, NICHT GELÖSCHT"},
+ {n:9,t:"TIEFE 9 — CLUSTER",s:"9 Cluster · 9x PIPELINE ohne Nummer — WORK LINIE"},
+ {n:3,t:"TIEFE 3 — FELDER",s:"3 Felder · 3 und 6 = 1ns · H B T"},
+ {n:1,t:"TIEFE 1 — CORE",s:"1 Core · 1 Name = 1 Respo · 1 Chip = 1 Platz · ZaM"},
+ {n:0,t:"TIEFE 0 — ZAM",s:"0 = OFFEN / GEHALTEN · 729→3 bleibt GEHALTEN · CLOSED"},
+];
+let i=0;
+function render(){const s=steps[i];document.getElementById('num').textContent=s.n;document.getElementById('label').textContent=s.t;document.getElementById('sub').textContent=s.s;document.getElementById('fill').style.width=(s.n/729*100)+"%";}
+function zam(){ if(i<steps.length-1){i++;render();document.getElementById('log').textContent+="\nZACK — ZaM — "+steps[i].n+" · "+steps[i].t;} else {document.getElementById('log').textContent+="\n● ZAM — TIEFE 0 — GEHALTEN — wieder hoch? KLICK ZURÜCK";} }
+function back(){ if(i>0){i--;render();document.getElementById('log').textContent+="\n↩ ZURÜCK — "+steps[i].n;} }
+function reset(){ i=0;render();document.getElementById('log').textContent="● RESET — 729 — ZaM — KLICK UND ZACK"; }
+render();
+document.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();zam();} if(e.key==='Backspace'){back();}});
+</script>
+<p class="gold">CLOSED · freundlich aber bestimmt · Discord KOOP / Direct Server OPEN wie immer · Discord = KEY</p>
+</body></html>
