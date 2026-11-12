@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9index.html — ROOT — NC — VOLL — MACHT WAS</title>
+<style>body{background:#000;color:#0f0;font-family:Consolas,monospace;padding:16px}h1{color:#ffd700;text-align:center}h2{color:#6cf;border-bottom:1px solid #333;padding-bottom:6px}.box{border:1px solid #333;background:#111;padding:12px;margin:12px 0;border-radius:10px}button{background:#111;color:#0f0;border:1px solid #333;padding:10px 14px;border-radius:8px;cursor:pointer;font-family:inherit}button:hover{border-color:#ffd700;color:#ffd700}button.primary{border-color:#ffd700;color:#ffd700}pre{background:#050505;padding:12px;white-space:pre-wrap;max-height:260px;overflow:auto}.gold{color:#ffd700}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.c{border:1px solid #333;padding:10px;text-align:center}.big{font-size:52px;text-align:center}.bar{height:14px;background:#111;border:1px solid #333;border-radius:7px;overflow:hidden}.fill{height:100%;background:#ffd700;width:100%;transition:width .3s}.ok{color:#0f0}.warn{color:#ff0}</style></head><body>
+<h1>9index.html — ROOT — NC — VOLL</h1>
+<p style="text-align:center"><b class="gold">Jetzt macht er was, Mann. Nicht nur Zahl. Voll NC.</b><br>RAM · ROM · RESPO · H · B · T · Q · D · F</p>
+
+<div class="box"><b>1 · ZaM — KLICK UND ZACK — MACHT WAS</b><br><div class="big" id="num">729</div><div style="text-align:center" id="label">TIEFE 729 — ALLES</div><div class="bar"><div class="fill" id="fill"></div></div><br>
+<button class="primary" onclick="zam()">👆 KLICK — ZACK — ZaM</button>
+<button onclick="back()">↩ ZURÜCK</button>
+<button onclick="reset()">⟲ RESET</button></div>
+
+<div class="grid">
+<div class="c"><b>QUETSCHEN</b><br><span id="q-out">—</span><br><button onclick="quetschenTest()">▶ QUETSCHEN</button></div>
+<div class="c"><b>PIPELINE</b><br><span id="p-out">—</span><br><button onclick="pipelineRun()">▶ PIPELINE</button></div>
+<div class="c"><b>QI SCAN</b><br><span id="qi-out">—</span><br><button onclick="qiScan()">▶ QI SCAN</button></div>
+</div>
+
+<div class="grid">
+<div class="c"><b>TEAM 12</b><br><span id="t12">0 / 12</span><br><button onclick="besetzen('TEAM')">BESSETZEN</button></div>
+<div class="c"><b>SINGLE 9</b><br><span id="s9">0 / 9</span><br><button onclick="besetzen('SINGLE')">BESSETZEN</button></div>
+<div class="c"><b>MAULWURF</b><br><span id="mole">Tiefe 0</span><br><button onclick="graben()">⛏ GRABEN</button></div>
+</div>
+
+<div class="box"><h2>LOG — WAS ER MACHT</h2><pre id="log">● bereit — 9index.html — ROOT — NC — VOLL
+● Klick macht was. Nicht nur Zahl.</pre></div>
+<div class="box"><h2>ORT — ROOT</h2><pre>/koop/ · /team/ · /run/ · /raid/ · /rolle/ · /scsi/ · /In.js/ · olym.pate · NC / ROOT = 9index.html
+Gesondert: 1 · 2 · 4 · 3 und 6 = 1ns · 9x PIPELINE ohne Nummer — WORK LINIE — STATE ver0t · 9</pre></div>
+
+<script>
+let i=0, team=0, single=0, tiefe=0;
+const steps=[{n:729,t:"TIEFE 729 — ALLES"},{n:81,t:"TIEFE 81 — MITTEL"},{n:9,t:"TIEFE 9 — CLUSTER"},{n:3,t:"TIEFE 3 — FELDER"},{n:1,t:"TIEFE 1 — CORE"},{n:0,t:"TIEFE 0 — ZAM — GEHALTEN"}];
+function log(m){const e=document.getElementById('log');e.textContent+="\n"+m;e.scrollTop=e.scrollHeight;}
+function render(){document.getElementById('num').textContent=steps[i].n;document.getElementById('label').textContent=steps[i].t;document.getElementById('fill').style.width=(steps[i].n/729*100)+"%";}
+function zam(){if(i<steps.length-1){i++;render();log("ZACK — ZaM — "+steps[i].n+" · "+steps[i].t+" · QUETSCHEN läuft"); quetschenTest(true);}else{log("● ZAM — TIEFE 0 — GEHALTEN — CLOSED");}}
+function back(){if(i>0){i--;render();log("↩ ZURÜCK — "+steps[i].n);}}
+function reset(){i=0;team=0;single=0;tiefe=0;render();document.getElementById('t12').textContent="0 / 12";document.getElementById('s9').textContent="0 / 9";document.getElementById('mole').textContent="Tiefe 0";document.getElementById('log').textContent="● RESET — 729 — 9index.html — ROOT — NC — VOLL";}
+// QUETSCHEN — echt gerechnet
+const SCORE={"·":0,"❄":0.4,"≈":0.65,"✿":1,"✕":0,"▲":0.85};
+function quetschenTest(silent){
+  const layers=Array.from({length:9},(_,li)=>Array.from({length:81},(_,j)=>['✿','❄','≈','▲','✕','·','✿','❄','≈'][(li+j)%9]));
+  const v81=layers.map(l=>l.reduce((s,c)=>s+(SCORE[c]??0),0)/81);
+  const v9=Array.from({length:9},(_,ii)=>[0,1,2,3,4,5,6,7,8].reduce((s,j)=>s+v81[j*9+ii],0)/9);
+  const v3=[(v9[0]+v9[1]+v9[2])/3,(v9[3]+v9[4]+v9[5])/3,(v9[6]+v9[7]+v9[8])/3];
+  const core=(v3[0]+v3[1]+v3[2])/3;
+  document.getElementById('q-out').textContent="core "+core.toFixed(4)+" · v3 "+v3.map(x=>x.toFixed(2)).join(" / ");
+  if(!silent) log("▶ QUETSCHEN — 729 → 81 → 9 → 3 → 1 · core "+core.toFixed(4)+" · v9 ["+v9.map(x=>x.toFixed(2)).join(", ")+"]");
+  return core;
+}
+function pipelineRun(){
+  const seq=["P0 WAKE","P1 MELT","P2 MERGE","P4 START","Pe FINALIZE"];
+  let k=0; document.getElementById('p-out').textContent="läuft…";
+  const iv=setInterval(()=>{ if(k<seq.length){ log("▶ PIPELINE — "+seq[k]); document.getElementById('p-out').textContent=seq[k]; k++; } else { clearInterval(iv); document.getElementById('p-out').textContent="FUSION bereit"; log("✅ PIPELINE — FUSION bereit"); } },350);
+}
+function qiScan(){
+  const core=quetschenTest(true);
+  const r={id:"CORE",core:true,fn:true,stable:true,ready:true,respo360:true,core_roh:core};
+  document.getElementById('qi-out').textContent="ready:true · core "+core.toFixed(4);
+  log("📊 QI SCAN — "+JSON.stringify(r));
+}
+function besetzen(w){
+  if(w==='TEAM'){ team=Math.min(12,team+1); document.getElementById('t12').textContent=team+" / 12"; log("▶ TEAM BESSETZT — "+team+" / 12 — 1 Name = 1 Respo"); if(team===12) log("✅ TEAM 12 — VOLL — KOOP TEAM SORTIEROMAT"); }
+  else { single=Math.min(9,single+1); document.getElementById('s9').textContent=single+" / 9"; log("▶ SINGLE BESSETZT — "+single+" / 9 — 1 Mann = 1 Linie"); if(single===9) log("✅ SINGLE 9 — VOLL — SINGLE RAID SCSI"); }
+}
+function graben(){ tiefe++; document.getElementById('mole').textContent="Tiefe "+tiefe; log("⛏ MAULWURF — GRABEN — Tiefe "+tiefe+" · WÜHL RUM RUM RUM"); }
+render();
+</script>
+<p style="text-align:center" class="gold">CLOSED · freundlich aber bestimmt · Discord KOOP / Direct Server OPEN wie immer · Discord = KEY</p>
+</body></html>
