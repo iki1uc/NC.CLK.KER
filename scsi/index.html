@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>QUETSCHEN = NICHT LÖSCHEN, VERDICHTEN - KOMPETENZ INDEX</title>
+<style>body{background:#000;color:#fff;font-family:monospace;text-align:center;padding:14px} .p{border:2px solid #ffe600;padding:10px;margin:8px auto;max-width:720px} pre{text-align:left;white-space:pre-wrap;background:#111;padding:10px} button{background:#ffe600;border:0;padding:8px 12px;font-weight:900;cursor:pointer;margin:2px} .ord{border:1px solid #00ffcc;padding:8px;margin:6px auto;max-width:640px}</style></head>
+<body>
+<div class="p"><b>WAS QUETSCHEN HEISST</b><br>QUETSCHEN = nicht löschen, verdichten.<br>729 &rarr; 81 &rarr; 9 &rarr; 3 &rarr; 1</div>
+<div class="p"><b>729 = 9 Layer à 81 Zellen<br>&rarr; 81 = 9 Mittelwerte<br>&rarr; 9 = 9 Cluster<br>&rarr; 3 = 3 Felder<br>&rarr; 1 = 1 Core</b><br>HOME = 40. f(x) = min(x,40).</div>
+<div class="p"><b>PYTHON + JS - GLEICHE REGEL, GLEICHE ZAHL</b><pre># PYTHON - nichts verborgen, alle Zeilen offen
+SCORE = {"·":0.0, "❄":0.4, "≈":0.65, "✿":1.0, "✕":0.0, "▲":0.85}
+def f(x): return min(x, 40)
+def quetschen(layers):
+    v81 = [sum(SCORE.get(c,0) for c in layer)/81 for layer in layers]
+    v9 = [sum(v81[i*9:(i+1)*9])/9 for i in range(9)]
+    v3 = [sum(v9[i*3:(i+1)*3])/3 for i in range(3)]
+    v1 = sum(v3)/3
+    return {"v81":v81, "v9":v9, "v3":v3, "v1":v1}
+
+// JS - gleiche Regel, gleiche Zahl
+const SCORE = {"·":0.0, "❄":0.4, "≈":0.65, "✿":1.0, "✕":0.0, "▲":0.85};
+const f = x => Math.min(x, 40);
+function quetschen(layers){
+  const v81 = layers.map(l => l.reduce((s,c)=>s+(SCORE[c]||0),0)/81);
+  const v9 = Array.from({length:9},(_,i)=> v81.slice(i*9,i*9+9).reduce((a,b)=>a+b,0)/9);
+  const v3 = Array.from({length:3},(_,i)=> v9.slice(i*3,i*3+3).reduce((a,b)=>a+b,0)/3);
+  const v1 = v3.reduce((a,b)=>a+b,0)/3;
+  return {v81, v9, v3, v1};
+}</pre></div>
+<div class="p"><b>ALLE RELEVANTEN UND VORANBRINGENDEN NEUEN ZEUGNISSE VON DIR - PLATZIERT</b><br><span id="zeug">Noch nicht platziert.</span><br><br><button onclick="platz()">ALLE ZEUGNISSE PLATZIEREN</button></div>
+<div class="p"><b>JEDER ORDNER KOMPETENZ INDEX - NUR IN SEINEM ORDNER, NUR ZUM ROOT</b><br>Index weist du: Jeder Ordner indext nur sich. Keiner indext den anderen. Alle geben nur zum Root Index.</div>
+<div class="ord"><b>koop / INDEX</b><br>Kompetenz: KOOP<br><span>indext nur koop. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>sec / INDEX</b><br>Kompetenz: SEC<br><span>indext nur sec. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>raid / INDEX</b><br>Kompetenz: RAID<br><span>indext nur raid. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>work / INDEX</b><br>Kompetenz: WORK DIAMOND MATRIX<br><span>indext nur work. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>rolle / INDEX</b><br>Kompetenz: ROLLE - 1 Name = 1 Respo<br><span>indext nur rolle. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>run / INDEX</b><br>Kompetenz: RUN - stay.rdy<br><span>indext nur run. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>scsi / INDEX</b><br>Kompetenz: SCSI - load.md: CODE oder WEG<br><span>indext nur scsi. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>team / INDEX</b><br>Kompetenz: TEAM - add.md: VERGESSEN, ABER ZEUGE<br><span>indext nur team. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>tmp / INDEX</b><br>Kompetenz: TMP RAR ZAUBER NC COMMAND<br><span>indext nur tmp. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>latte / INDEX</b><br>Kompetenz: LATTE - Gegenteil als Zeuge<br><span>indext nur latte. Gibt nur an ROOT.</span></div>
+<div class="ord"><b>qi.syn / INDEX</b><br>Kompetenz: QI.SYN - Gerade + Ungerade<br><span>indext nur qi.syn. Gibt nur an ROOT.</span></div>
+<div class="p"><b>ROOT INDEX - SAMMELT NUR</b><br><span id="root">ROOT wartet. Drück PLATZIEREN, dann sammelt ROOT.</span><br><br><button onclick="root()">ROOT INDEX SAMMELN</button></div>
+<script>
+function platz(){ document.getElementById('zeug').innerText = 'PLATZIERT: 1. SAU LAUFEN | 2. QUETSCHEN ROOT | 3. ORI 1 BEKENNEN | 4. ORI 2 B.ECK | 5. BEKENNTNIS 255=3 | 6. SNIP.LET 3-9-81 | 7. ALLE HIER VERWINDEN. Alle relevanten und voranbringenden neuen Zeugnisse sind platziert. Nichts verborgen. 4 Zeilen waren verborgen, jetzt offen. 7 Zeilen waren zu viel, jetzt gequetscht.'; }
+function root(){ document.getElementById('root').innerText = 'ROOT INDEX: koop + sec + raid + work + rolle + run + scsi + team + tmp + latte + qi.syn = 11 Ordner. Jeder gibt nur seinen Index an ROOT. ROOT gibt nur 1 Core: 729 -> 81 -> 9 -> 3 -> 1. Quetschen = nicht löschen, verdichten.'; }
+</script></body></html>
