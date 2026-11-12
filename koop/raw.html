@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>FOUNDER · PIPELINE4 · PIPEBUILD · DOOR/DOO</title>
+<style>
+body{background:#0a0a0f;color:#0f0;font-family:Consolas;padding:20px;}
+h1{color:#ffd700;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.box{background:#111;border:1px solid #333;padding:15px;border-radius:8px;}
+.box h2{color:#6cf;font-size:14px;}
+pre{background:#000;padding:10px;border-radius:4px;font-size:11px;}
+button{background:#111;color:#0ff;border:1px solid #0ff;padding:6px 12px;cursor:pointer;}
+button:hover{background:#1a1a2a;border-color:#ffd700;}
+.status{display:inline-block;padding:2px 10px;border-radius:10px;font-size:10px;}
+.status.ok{background:#0f0;color:#000;}
+.status.warn{background:#ff0;color:#000;}
+.status.err{background:#f00;color:#fff;}
+</style>
+</head>
+<body>
+
+<h1>⚡ FOUNDER · PIPELINE4 · PIPEBUILD · DOOR/DOO</h1>
+
+<div class="grid">
+    <!-- PIPELINE4 -->
+    <div class="box">
+        <h2>🔄 PIPELINE4</h2>
+        <div id="pipeline-status"><span class="status ok">● AKTIV</span></div>
+        <pre id="pipeline-out">Lade...</pre>
+        <button onclick="runPipeline()">▶ PIPELINE START</button>
+    </div>
+
+    <!-- PIPEBUILD -->
+    <div class="box">
+        <h2>🧱 PIPEBUILD</h2>
+        <div id="build-status"><span class="status ok">● AKTIV</span></div>
+        <pre id="build-out">Lade...</pre>
+        <button onclick="runBuild()">▶ BUILD START</button>
+    </div>
+
+    <!-- DOOR -->
+    <div class="box">
+        <h2>🚪 DOOR</h2>
+        <div id="door-status"><span class="status warn">● GESCHLOSSEN</span></div>
+        <pre id="door-out">Lade...</pre>
+        <button onclick="doorOpen()">🚪 ÖFFNEN</button>
+        <button onclick="doorClose()">🚪 SCHLIESSEN</button>
+    </div>
+
+    <!-- DOO/IT -->
+    <div class="box">
+        <h2>🔑 DOO/IT</h2>
+        <div id="doo-status"><span class="status err">● INAKTIV</span></div>
+        <pre id="doo-out">Lade...</pre>
+        <button onclick="dooActivate()">🔑 AKTIVIEREN</button>
+        <button onclick="dooDeactivate()">🔑 DEAKTIVIEREN</button>
+    </div>
+</div>
+
+<!-- GLOBAL -->
+<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+    <button onclick="fullSystem()">⚡ FULL SYSTEM START</button>
+    <button onclick="resetAll()">⟲ RESET ALL</button>
+    <button onclick="exportJSON()">📤 EXPORT JSON</button>
+</div>
+
+<pre id="log" style="background:#111;padding:15px;margin-top:20px;border:1px solid #333;border-radius:8px;max-height:200px;overflow:auto;">System bereit...</pre>
+
+<script>
+// ============================================================
+// 1. PIPELINE4 (P0, P1, P2, P4)
+// ============================================================
+function log(msg) {
+    const el = document.getElementById('log');
+    el.textContent += '\n' + msg;
+    el.scrollTop = el.scrollHeight;
+}
+
+// Simulierte Pipeline
+function runPipeline() {
+    log('▶ PIPELINE4 gestartet');
+    const core = { id: 'CORE4', level: 4, ready: true };
+    const p0 = { id: 'P0', phase: 'RAW', core };
+    const p1 = { id: 'P1', phase: 'STRUCTURE', core: p0 };
+    const p2 = { id: 'P2', phase: 'VECTOR', core: p1 };
+    const p4 = { id: 'P4', phase: 'FUSION', core: p2, ready: true };
+    document.getElementById('pipeline-out').textContent = JSON.stringify(p4, null, 2);
+    log('✅ PIPELINE4 abgeschlossen → FUSION bereit');
+}
+
+// ============================================================
+// 2. PIPEBUILD
+// ============================================================
+function runBuild() {
+    log('▶ PIPEBUILD gestartet');
+    const build = {
+        id: 'PIPEBUILD',
+        status: 'BUILD-READY',
+        axes: { '3': 'Grundachse', '4': 'Mechanismus', '6': 'Dreieck', '27': 'Wurzel' },
+        modules: ['INDEX', 'BIND', 'CLASS', 'GEO', 'META', 'WEIGHT', 'STABLE', 'HOTSWAP', 'OVERDRIVE'],
+        timestamp: Date.now()
+    };
+    document.getElementById('build-out').textContent = JSON.stringify(build, null, 2);
+    log('✅ PIPEBUILD abgeschlossen → ' + build.modules.length + ' Module');
+}
+
+// ============================================================
+// 3. DOOR
+// ============================================================
+var doorState = { open: false, count: 0 };
+
+function doorOpen() {
+    doorState.open = true;
+    doorState.count++;
+    document.getElementById('door-status').innerHTML = '<span class="status ok">● GEÖFFNET</span>';
+    document.getElementById('door-out').textContent = JSON.stringify({ status: 'open', count: doorState.count }, null, 2);
+    log('🚪 DOOR geöffnet (#' + doorState.count + ')');
+}
+
+function doorClose() {
+    doorState.open = false;
+    document.getElementById('door-status').innerHTML = '<span class="status warn">● GESCHLOSSEN</span>';
+    document.getElementById('door-out').textContent = JSON.stringify({ status: 'closed', count: doorState.count }, null, 2);
+    log('🚪 DOOR geschlossen');
+}
+
+// ============================================================
+// 4. DOO/IT
+// ============================================================
+var dooState = { active: false, count: 0 };
+
+function dooActivate() {
+    dooState.active = true;
+    dooState.count++;
+    document.getElementById('doo-status').innerHTML = '<span class="status ok">● AKTIV</span>';
+    document.getElementById('doo-out').textContent = JSON.stringify({ status: 'active', control: true, count: dooState.count }, null, 2);
+    log('🔑 DOO/IT aktiviert (#' + dooState.count + ')');
+}
+
+function dooDeactivate() {
+    dooState.active = false;
+    document.getElementById('doo-status').innerHTML = '<span class="status err">● INAKTIV</span>';
+    document.getElementById('doo-out').textContent = JSON.stringify({ status: 'inactive' }, null, 2);
+    log('🔑 DOO/IT deaktiviert');
+}
+
+// ============================================================
+// 5. FULL SYSTEM
+// ============================================================
+function fullSystem() {
+    log('⚡ FULL SYSTEM START');
+    dooActivate();
+    doorOpen();
+    runPipeline();
+    runBuild();
+    log('✅ FULL SYSTEM COMPLETE');
+}
+
+// ============================================================
+// 6. RESET
+// ============================================================
+function resetAll() {
+    doorClose();
+    dooDeactivate();
+    document.getElementById('pipeline-out').textContent = '—';
+    document.getElementById('build-out').textContent = '—';
+    log('⟲ RESET ALL');
+}
+
+// ============================================================
+// 7. EXPORT JSON
+// ============================================================
+function exportJSON() {
+    const data = {
+        timestamp: Date.now(),
+        system: 'FOUNDER',
+        pipeline4: { phase: 'FUSION', ready: true },
+        pipebuild: { status: 'BUILD-READY', modules: 9 },
+        door: doorState,
+        doo: dooState
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'founder-system-' + Date.now() + '.json';
+    a.click();
+    log('📤 JSON exportiert');
+}
+
+// ============================================================
+// 8. INIT
+// ============================================================
+log('⚡ FOUNDER System bereit');
+log('📦 PIPELINE4 · PIPEBUILD · DOOR · DOO/IT');
+log('⌨️  Klicke die Buttons oder verwende die Funktionen');
+
+// Initialen Status setzen
+document.getElementById('door-out').textContent = JSON.stringify({ status: 'closed' }, null, 2);
+document.getElementById('doo-out').textContent = JSON.stringify({ status: 'inactive' }, null, 2);
+document.getElementById('pipeline-out').textContent = '—';
+document.getElementById('build-out').textContent = '—';
+</script>
+</body>
+</html>
