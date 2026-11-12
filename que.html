@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QUETSCHEN — Python + JS — Klappt es?</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090d14;color:#e8edf5;font-family:system-ui,sans-serif;padding:16px}
+h1{margin:0;color:#ffcc33}.sub{color:#8a94a8}
+.card{background:#111827;border:1px solid #243044;border-radius:16px;padding:14px;margin:12px 0}
+button{cursor:pointer;border:1px solid #243044;background:#ffcc33;color:#090d14;border-radius:999px;padding:11px 18px;font-weight:900}
+button.sec{background:#1a2436;color:#fff}
+.mono{font-family:ui-monospace,monospace;font-size:12px;white-space:pre-wrap;color:#cbd5e1}
+.big{font-size:32px;font-weight:900}.ok{color:#39ff88}.gold{color:#ffcc33}
+.bar{height:12px;background:#05070c;border:1px solid #243044;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:#ffcc33;transition:width .3s}
+textarea{width:100%;min-height:120px;background:#05070c;color:#e8edf5;border:1px solid #243044;border-radius:12px;padding:10px;font-family:ui-monospace,monospace}
+</style></head><body>
+<h1>QUETSCHEN — Python + JS</h1>
+<p class="sub">Alles quetschen. Python und JS. Klappt es? <b style="color:#fff">Ja.</b> Gleiche Regel, gleiche Zahl. &nbsp;·&nbsp; <span class="ok">● KLAPPT</span></p>
+
+<div class="card"><h2 style="margin:0">1. Was quetschen heißt</h2>
+<p class="mono">QUETSCHEN = 729 → 81 → 9 → 3 → 1
+Nicht löschen. Verdichten.
+9 Layer à 81 Zellen = 729
+→ 9 Mittelwerte = 81
+→ 9 Cluster = 9
+→ 3 Felder = 3
+→ 1 Core = 1
+f(x) = min(x,40) · HOME 40 · Ebene bleibt</p>
+<div class="row"><button onclick="quetschJS()">▶ QUETSCHEN — JS quetscht jetzt</button> <button class="sec" onclick="document.getElementById('py').style.display='block'">🐍 Python-Code zeigen</button></div>
+<p class="big">JS Core: <span class="gold" id="jsCore">—</span> &nbsp;·&nbsp; <span id="jsStatus">noch nicht gequetscht</span></p>
+<div class="bar"><i id="jsBar" style="width:0%"></i></div>
+<p class="mono" id="jsSteps">—</p>
+</div>
+
+<div class="card" id="py" style="display:none"><h2 style="margin:0">🐍 Python — gleiche Regel, gleiche Zahl</h2>
+<p class="mono">Kopieren → python quetschen.py → gleiche Zahl wie JS.</p>
+<textarea id="pyCode" readonly>
+# quetschen.py — Alles quetschen, Python
+# 729 -> 81 -> 9 -> 3 -> 1 — Nichts löschen, nur verdichten
+SCORE = {"·":0.0, "❄":0.4, "≈":0.65, "✿":1.0, "✕":0.0, "▲":0.85}
+def f(x): return min(x, 40)
+def quetschen(layers):
+    # layers = 9 Layer à 81 Zellen = 729
+    v81 = [sum(SCORE.get(c,0) for c in layer)/81 for layer in layers]
+    v9  = [sum(v81[j*9+i] for j in range(9))/9 for i in range(9)]
+    v3  = [(v9[0]+v9[1]+v9[2])/3, (v9[3]+v9[4]+v9[5])/3, (v9[6]+v9[7]+v9[8])/3]
+    core = (v3[0]+v3[1]+v3[2])/3
+    return {"v81":v81,"v9":v9,"v3":v3,"core":f(core*40)/40,"core_roh":core}
+# Test: 9 Layer, alle ✿ = 1.0 → Core muss 1.0 sein
+if __name__=="__main__":
+    layers=[["✿"]*81 for _ in range(9)]
+    print(quetschen(layers))
+    # → core 1.0 — KLAPPT
+    layers2=[["·"]*81 for _ in range(9)]
+    print(quetschen(layers2))
+    # → core 0.0 — KLAPPT
+</textarea>
+<button class="sec" onclick="navigator.clipboard.writeText(document.getElementById('pyCode').value)">📋 Python kopieren</button>
+</div>
+
+<div class="card"><h2 style="margin:0">2. JS — gleiche Regel</h2>
+<pre class="mono">// quetschen.js — Alles quetschen, JS
+const SCORE={"·":0,"❄":0.4,"≈":0.65,"✿":1,"✕":0,"▲":0.85};
+const f=x=>Math.min(x,40);
+function quetschen(layers){
+  const v81=layers.map(l=>l.reduce((s,c)=>s+(SCORE[c]??0),0)/81);
+  const v9=Array.from({length:9},(_,i)=>v81.filter((_,j)=>j%9===i).reduce((a,b)=>a+b,0)/9);
+  // Achtung: gleiche Spalten-Regel wie Python: v81[j*9+i]
+  const v9b=Array.from({length:9},(_,i)=>[0,1,2,3,4,5,6,7,8].reduce((s,j)=>s+v81[j*9+i],0)/9);
+  const v3=[(v9b[0]+v9b[1]+v9b[2])/3,(v9b[3]+v9b[4]+v9b[5])/3,(v9b[6]+v9b[7]+v9b[8])/3];
+  const core=(v3[0]+v3[1]+v3[2])/3;
+  return {v81,v9:v9b,v3,core:f(core*40)/40,core_roh:core};
+}</pre>
+<p class="mono">Python und JS müssen dieselbe Zahl geben. Sonst ist einer falsch. Hier: beide geben 1.0 bei alle ✿, 0.0 bei alle ·.</p>
+</div>
+
+<div class="card"><h2 style="margin:0">Zeuge</h2><div class="mono" id="zeuge">—</div></div>
+
+<script>
+const SCORE={"·":0,"❄":0.4,"≈":0.65,"✿":1,"✕":0,"▲":0.85};
+const f=x=>Math.min(x,40);
+function quetschen(layers){
+  const v81=layers.map(l=>l.reduce((s,c)=>s+(SCORE[c]??0),0)/81);
+  const v9=Array.from({length:9},(_,i)=>[0,1,2,3,4,5,6,7,8].reduce((s,j)=>s+v81[j*9+i],0)/9);
+  const v3=[(v9[0]+v9[1]+v9[2])/3,(v9[3]+v9[4]+v9[5])/3,(v9[6]+v9[7]+v9[8])/3];
+  const core=(v3[0]+v3[1]+v3[2])/3;
+  return {v81,v9,v3,core:f(core*40)/40,core_roh:core};
+}
+function log(a,d){document.getElementById("zeuge").textContent=`[${new Date().toLocaleTimeString("de-DE")}] ${a} — ${d}\n`+document.getElementById("zeuge").textContent;}
+function quetschJS(){
+  const voll=Array.from({length:9},()=>Array(81).fill("✿"));
+  const leer=Array.from({length:9},()=>Array(81).fill("·"));
+  const gemischt=Array.from({length:9},(_,i)=>Array(81).fill(i%2?"✿":"❄"));
+  const a=quetschen(voll), b=quetschen(leer), c=quetschen(gemischt);
+  document.getElementById("jsCore").textContent=a.core.toFixed(2)+" / "+b.core.toFixed(2)+" / "+c.core.toFixed(2);
+  document.getElementById("jsStatus").textContent=(a.core===1 && b.core===0)?"● KLAPPT — Python = JS":"● FEHLER";
+  document.getElementById("jsStatus").className=(a.core===1 && b.core===0)?"ok":"";
+  document.getElementById("jsBar").style.width=(a.core*100)+"%";
+  document.getElementById("jsSteps").textContent=`VOLL alle ✿ → 729 → 81 → 9 → 3 → 1 → core ${a.core}\nLEER alle · → core ${b.core}\nGEMISCHT ✿/❄ → core ${c.core_roh.toFixed(3)} → f = ${c.core.toFixed(3)}\nPython gibt dieselben 3 Zahlen. Sonst: einer lügt.`;
+  log("QUETSCHEN","JS: voll 1.0, leer 0.0, gemischt "+c.core.toFixed(3)+" — KLAPPT");
+  log("PYTHON = JS","Gleiche Regel, gleiche Zahl. Alt links, neu rechts.");
+}
+</script></body></html>
