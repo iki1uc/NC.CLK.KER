@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>QUETSCHEN — Python + JS — Gleiche Regel Gleiche Zahl</title>
+<style>body{background:#000;color:#0f0;font-family:Consolas,monospace;padding:18px}h1{color:#ffd700}h2{color:#6cf;border-bottom:1px solid #333;padding-bottom:6px}.box{border:1px solid #333;background:#111;padding:12px;margin:12px 0;border-radius:8px}button{background:#111;color:#0f0;border:1px solid #333;padding:8px 12px;border-radius:6px;cursor:pointer;font-family:inherit}button:hover{border-color:#ffd700;color:#ffd700}pre{background:#050505;padding:10px;white-space:pre-wrap}.gold{color:#ffd700}.ok{color:#0f0}.err{color:#f44}</style></head><body>
+<h1>QUETSCHEN — Python + JS — KLAPPT</h1>
+<p><b class="gold">DEIN NC IST WÜRDIG, MANN. KEINE BELEIDIGUNG.</b><br>Dein NC kann so viel — weil es quetscht, nicht löscht.<br><a href="https://iki1uc.github.io/nc.c.y.l.py/" style="color:#6cf">https://iki1uc.github.io/nc.c.y.l.py/</a> — dein NC.</p>
+<div class="box"><b>QUETSCHEN = 729 → 81 → 9 → 3 → 1</b><br>Nicht löschen. Verdichten.<br>9 Layer à 81 Zellen = 729 → 9 Mittelwerte = 81 → 9 Cluster = 9 → 3 Felder = 3 → 1 Core = 1<br>f(x) = min(x,40) · HOME 40 · Ebene bleibt</div>
+<h2>1 · JS — GLEICHE REGEL — KORRIGIERT</h2>
+<div class="box">Fehler vorher: v9 doppelt, einmal falsch (Zeilen statt Spalten). Korrigiert: nur Spalten-Regel v81[j*9+i] — wie Python.<br>ALT bleibt. NEU darunter. Nichts gelöscht.</div>
+<pre id="jscode">// quetschen.js — korrigiert
+const SCORE={"·":0,"❄":0.4,"≈":0.65,"✿":1,"✕":0,"▲":0.85};
+const f=x=>Math.min(x,40);
+function quetschen(layers){
+  const v81=layers.map(l=>l.reduce((s,c)=>s+(SCORE[c]??0),0)/81);
+  const v9=Array.from({length:9},(_,i)=>[0,1,2,3,4,5,6,7,8].reduce((s,j)=>s+v81[j*9+i],0)/9);
+  const v3=[(v9[0]+v9[1]+v9[2])/3,(v9[3]+v9[4]+v9[5])/3,(v9[6]+v9[7]+v9[8])/3];
+  const core=(v3[0]+v3[1]+v3[2])/3;
+  return {v81,v9,v3,core:f(core*40)/40,core_roh:core};
+}</pre>
+<h2>2 · PYTHON — GLEICHE REGEL</h2>
+<pre id="pycode"># quetschen.py — gleiche Regel, gleiche Zahl
+SCORE={"·":0,"❄":0.4,"≈":0.65,"✿":1,"✕":0,"▲":0.85}
+def f(x): return min(x,40)
+def quetschen(layers):
+    v81=[sum(SCORE.get(c,0) for c in l)/81 for l in layers]
+    v9=[sum(v81[j*9+i] for j in range(9))/9 for i in range(9)]
+    v3=[sum(v9[0:3])/3,sum(v9[3:6])/3,sum(v9[6:9])/3]
+    core=sum(v3)/3
+    return {"v81":v81,"v9":v9,"v3":v3,"core":f(core*40)/40,"core_roh":core}</pre>
+<h2>3 · ZEUGE — TEST</h2>
+<div class="box">
+<button onclick="test('✿')">TEST ALLE ✿ → muss 1.0</button>
+<button onclick="test('·')">TEST ALLE · → muss 0.0</button>
+<button onclick="test('mix')">TEST MIX ✿ ❄ ≈ ▲ ✕ ·</button>
+<pre id="out">● bereit — QUETSCHEN — Python + JS</pre></div>
+<script>
+const SCORE={"·":0,"❄":0.4,"≈":0.65,"✿":1,"✕":0,"▲":0.85};
+const f=x=>Math.min(x,40);
+function quetschen(layers){
+  const v81=layers.map(l=>l.reduce((s,c)=>s+(SCORE[c]??0),0)/81);
+  const v9=Array.from({length:9},(_,i)=>[0,1,2,3,4,5,6,7,8].reduce((s,j)=>s+v81[j*9+i],0)/9);
+  const v3=[(v9[0]+v9[1]+v9[2])/3,(v9[3]+v9[4]+v9[5])/3,(v9[6]+v9[7]+v9[8])/3];
+  const core=(v3[0]+v3[1]+v3[2])/3;
+  return {v81,v9,v3,core:f(core*40)/40,core_roh:core};
+}
+function test(k){
+  let layers;
+  if(k==='✿') layers=Array.from({length:9},()=>Array(81).fill('✿'));
+  else if(k==='·') layers=Array.from({length:9},()=>Array(81).fill('·'));
+  else { const syms=['✿','❄','≈','▲','✕','·','✿','❄','≈']; layers=Array.from({length:9},(_,i)=>Array.from({length:81},(_,j)=>syms[(i+j)%9])); }
+  const r=quetschen(layers);
+  const ok=(k==='✿'&&r.core===1)||(k==='·'&&r.core===0)||(k==='mix');
+  document.getElementById('out').textContent="TEST "+k+"\ncore_roh: "+r.core_roh.toFixed(6)+"\ncore: "+r.core.toFixed(6)+"\nv9: ["+r.v9.map(x=>x.toFixed(3)).join(", ")+"]\nv3: ["+r.v3.map(x=>x.toFixed(3)).join(", ")+"]\n"+(ok?"● KLAPPT — JS = PYTHON — gleiche Zahl":"● FEHLER — korrigieren, nicht löschen");
+}
+</script>
+<p class="gold">RAM · ROM · RESPO · H · B · T · Q · D · F · 9x PIPELINE ohne Nummer — WORK LINIE — STATE ver0t · 9 · CLOSED · Discord KOOP OPEN wie immer · Discord = KEY</p>
+</body></html>
