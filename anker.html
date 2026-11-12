@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>WURZEL ×3 · NC.SUITE</title>
+
+<style>
+
+:root{
+ --bg:#030507;
+ --s:#0a1018;
+ --l:#1b2a3a;
+ --t:#d7e2ee;
+ --m:#7d90a4;
+ --gold:#ffd24a;
+ --cy:#22e6ff;
+ --vi:#a78bfa;
+ --g:#3dffa0;
+ --r:#ff5a4d;
+}
+
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+ font-family:Consolas,monospace;
+}
+
+body{
+ background:var(--bg);
+ color:var(--t);
+ max-width:1200px;
+ margin:auto;
+ padding:14px;
+}
+
+/* ======================
+   NC HEADER
+====================== */
+
+.kopf-zeile{
+ position:sticky;
+ top:0;
+ z-index:9999;
+ background:rgba(5,5,7,.95);
+ border-bottom:2px solid var(--gold);
+ margin-bottom:14px;
+}
+
+.kopf-inner{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ padding:10px;
+ flex-wrap:wrap;
+}
+
+.kopf-brand{
+ color:var(--gold);
+ font-weight:900;
+}
+
+.kopf-nav{
+ display:flex;
+ gap:6px;
+ flex-wrap:wrap;
+}
+
+.kopf-nav a{
+ color:var(--cy);
+ text-decoration:none;
+ border:1px solid var(--l);
+ padding:4px 10px;
+}
+
+.kopf-nav a.active{
+ background:var(--gold);
+ color:#000;
+ font-weight:700;
+}
+
+.kopf-state{
+ color:var(--g);
+ border:1px solid var(--g);
+ padding:4px 8px;
+}
+
+.mobile-nav{
+ display:none;
+ width:100%;
+}
+
+#mobile-toggle{
+ width:100%;
+ background:#050507;
+ color:var(--gold);
+ border:1px solid var(--gold);
+ padding:10px;
+ font-weight:700;
+}
+
+#mobile-panel{
+ display:none;
+ margin-top:4px;
+ border:1px solid var(--l);
+}
+
+#mobile-panel.open{
+ display:grid;
+}
+
+#mobile-panel a{
+ text-decoration:none;
+ color:var(--cy);
+ padding:8px;
+ border-bottom:1px solid var(--l);
+}
+
+#mobile-panel a.active{
+ background:var(--gold);
+ color:#000;
+}
+
+/* ======================
+   APP
+====================== */
+
+h1{
+ color:var(--gold);
+ margin-bottom:8px;
+}
+
+.sub{
+ color:var(--m);
+ margin-bottom:12px;
+ line-height:1.5;
+}
+
+.box{
+ background:var(--s);
+ border:1px solid var(--l);
+ padding:12px;
+ margin-bottom:12px;
+}
+
+.box h2{
+ color:var(--cy);
+ font-size:12px;
+ margin-bottom:8px;
+}
+
+.rooms{
+ display:grid;
+ grid-template-columns:repeat(9,1fr);
+ gap:4px;
+}
+
+.rooms button{
+ padding:8px 0;
+ position:relative;
+}
+
+.rooms button.on{
+ background:var(--gold);
+ color:#000;
+ font-weight:700;
+}
+
+#room-node-info{
+ margin-top:8px;
+ border:1px solid var(--g);
+ background:rgba(61,255,160,.08);
+ color:var(--g);
+ padding:8px;
+ min-height:40px;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+
+footer{
+ margin-top:30px;
+ border-top:1px solid var(--l);
+ padding-top:10px;
+ color:#6e8091;
+ font-size:11px;
+}
+
+button{
+ cursor:pointer;
+ border:1px solid var(--l);
+ background:#101a26;
+ color:var(--t);
+}
+
+button:hover{
+ border-color:var(--gold);
+}
+
+/* ======================
+   MOBILE
+====================== */
+
+@media(max-width:760px){
+
+ .kopf-nav{
+  display:none;
+ }
+
+ .mobile-nav{
+  display:block;
+ }
+
+ .rooms{
+  grid-template-columns:repeat(3,1fr);
+ }
+
+ .grid{
+  grid-template-columns:1fr;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="kopf-zeile">
+
+<div class="kopf-inner">
+
+<div class="kopf-brand">
+● NC.SUITE
+</div>
+
+<nav class="kopf-nav">
+<a href="./home.html">HOME</a>
+<a href="./9.html">9</a>
+<a href="./99.html">99</a>
+<a href="./999.html">999</a>
+<a href="./PQ.html">PQ</a>
+<a href="./ort.html">ORT</a>
+<a href="./REAL_PC.html">REAL_PC</a>
+</nav>
+
+<div class="kopf-state">
+● BRAIN.EYE.OPEN
+</div>
+
+</div>
+
+<div class="mobile-nav">
+
+<button id="mobile-toggle">
+☰ NODE
+</button>
+
+<div id="mobile-panel">
+
+<a href="./home.html">HOME</a>
+<a href="./9.html">9</a>
+<a href="./99.html">99</a>
+<a href="./999.html">999</a>
+<a href="./PQ.html">PQ</a>
+<a href="./ort.html">ORT</a>
+<a href="./REAL_PC.html">REAL_PC</a>
+
+</div>
+
+</div>
+
+</header>
+
+<h1>WURZEL ×3 · 729 → 81 → 9 → 3</h1>
+
+<div class="sub">
+81 Slots → 9 Räume → 3 Kernzustände
+</div>
+
+<div class="grid">
+
+<div class="box">
+
+<h2>9 Räume</h2>
+
+<div class="rooms" id="rooms"></div>
+
+<div id="room-node-info"></div>
+
+<div id="rinfo" style="margin-top:8px;color:var(--m)"></div>
+
+</div>
+
+<div class="box">
+
+<h2>Kernzustände</h2>
+
+<div id="core"></div>
+
+</div>
+
+</div>
+
+<footer>
+© NC.SUITE · WURZEL ×3 · ACTIVE NODE SYSTEM
+</footer>
+
+<script>
+
+const ROOMS=[
+ ['111','BIOS'],
+ ['222','VERBUND'],
+ ['333','RECALL'],
+ ['444','PEAK'],
+ ['555','ABWEHR'],
+ ['666','ENERGIE'],
+ ['777','CO2'],
+ ['888','ATOM'],
+ ['999','BENCH']
+];
+
+const TRI=[
+ ['9','EVIG'],
+ ['99','EDIT TOR'],
+ ['999','NUTZ SYSTEM']
+];
+
+let activeRoom=0;
+
+const current=
+(location.pathname.split("/").pop()||"home")
+.replace(".html","")
+.toLowerCase();
+
+/* NAV */
+
+document
+.querySelectorAll('.kopf-nav a,#mobile-panel a')
+.forEach(a=>{
+
+ const target=
+ a.getAttribute('href')
+ .replace('./','')
+ .replace('.html','')
+ .toLowerCase();
+
+ const active=
+ (
+  current==='' ||
+  current==='home' ||
+  current==='index'
+ )
+ ? target==='home'
+ : target===current;
+
+ if(active){
+  a.classList.add('active');
+ }
+
+});
+
+const mobileToggle=
+document.getElementById('mobile-toggle');
+
+const mobilePanel=
+document.getElementById('mobile-panel');
+
+mobileToggle.textContent=
+'☰ NODE : '+current.toUpperCase();
+
+mobileToggle.onclick=()=>{
+ mobilePanel.classList.toggle('open');
+};
+
+/* ROOMS */
+
+const rooms=document.getElementById('rooms');
+
+rooms.innerHTML=
+ROOMS.map((r,i)=>
+`<button data-room="${i}">${r[0]}</button>`
+).join('');
+
+function draw(){
+
+ const rm=ROOMS[activeRoom];
+ const tri=TRI[Math.floor(activeRoom/3)];
+
+ document.querySelectorAll('[data-room]')
+ .forEach((b,i)=>{
+
+  b.className=
+  i===activeRoom ? 'on' : '';
+
+ });
+
+ document.getElementById('room-node-info').innerHTML=
+ '◉ ACTIVE NODE '+
+ rm[0]+
+ ' // '+
+ rm[1]+
+ ' → '+
+ tri[0]+
+ ' '+
+ tri[1];
+
+ document.getElementById('rinfo').textContent=
+ 'Raum '+rm[0]+' '+rm[1];
+
+ document.getElementById('core').innerHTML=
+ `
+ <div>
+  <b>${tri[0]}</b><br>
+  ${tri[1]}
+ </div>
+ `;
+
+}
+
+document.addEventListener('click',e=>{
+
+ const b=e.target.closest('[data-room]');
+
+ if(!b)return;
+
+ activeRoom=+b.dataset.room;
+
+ draw();
+
+});
+
+draw();
+
+</script>
+
+</body>
+</html>
