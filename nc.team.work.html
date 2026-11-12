@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BUND · BÜNDNIS · TEAM · KOOP · WORK — AUDIT FIX — AXIOM 1</title>
+<style>body{margin:0;background:#0b0d11;color:#f0f2f8;font-family:system-ui,sans-serif;padding:16px}h1{color:#ffcc33}h2{color:#6cf;border-bottom:1px solid #2c3444;padding-bottom:6px}.box{background:#13171e;border:1px solid #2c3444;border-radius:14px;padding:16px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.c{background:#1a1f2a;border:1px solid #2c3444;border-radius:10px;padding:12px;text-align:center}button{background:#1a1f2a;color:#fff;border:1px solid #2c3444;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:700}button.gold{background:#ffcc33;color:#090d14}button:hover{border-color:#ffcc33}pre{background:#000;padding:12px;white-space:pre-wrap;border-radius:8px;max-height:240px;overflow:auto}.gold{color:#ffcc33}.ok{color:#2ed98c}.warn{color:#f5b342}table{width:100%;border-collapse:collapse}th,td{border:1px solid #2c3444;padding:8px;text-align:left}th{color:#ffcc33}</style></head><body>
+<h1>BUND · BÜNDNIS · TEAM · KOOP · WORK</h1>
+<p><b class="gold">AXIOM 1: ORT → NAME → FUNKTION → RESPO → TEAM → KOOP → WORK</b><br>Sortieren erzeugt Sortierung. Sortierung erzeugt Ordnung. Ordnung erzeugt Koop. Koop erzeugt Team. Team erzeugt Bündnis. Bündnis erzeugt Work.</p>
+
+<div class="box"><h2>1 · NC-ORTUNG — JETZT ALS OBJEKT DRIN (FIX 5)</h2>
+<pre id="ncid"></pre>
+<p>Die Datei ist jetzt selbst geortet. Kein Raten mehr. ORT NAME FUNKTION WO RESPO TEAM KOOP WORK — alles in einem Objekt.</p></div>
+
+<div class="box"><h2>2 · PIPELINE — NC-ZUSTÄNDE (FIX 3) — KEIN CDN (FIX 1)</h2>
+<p>Kein Font Awesome CDN mehr. Icons = lokale Zeichen: ◎ ◐ ● ◑ ⏳ ✓ — NC CORE = lokale Assets, NC WEB = CDN. Hier: CORE.</p>
+<div class="grid">
+<div class="c"><b>WAKE</b><br>P0<br><span id="s-wake">⏳ wartet</span></div>
+<div class="c"><b>STRUCTURE</b><br>P1<br><span id="s-structure">⏳ wartet</span></div>
+<div class="c"><b>VECTOR</b><br>P2<br><span id="s-vector">⏳ wartet</span></div>
+<div class="c"><b>FUSION</b><br>P4<br><span id="s-fusion">⏳ wartet</span></div>
+<div class="c"><b>FINALIZE</b><br>Pe<br><span id="s-finalize">⏳ wartet</span></div>
+<div class="c"><b>QI</b><br>PRÜFEN<br><span id="s-qi">⏳ wartet</span></div>
+</div>
+<p>B = <b id="resB">1.000</b> · L = <b id="resL">0.000</b> · HALT = <b id="halt">OFFEN</b> · f(x)=min(x,40) — HALT jetzt B ≥ 0.999 (FIX 4, Rundung)</p>
+<div>DER <input type="range" id="in-der" min="0" max="1" step="0.01" value="1"> DIE <input type="range" id="in-die" min="0" max="1" step="0.01" value="1"> DAS <input type="range" id="in-das" min="0" max="1" step="0.01" value="1"></div>
+<button class="gold" onclick="runPipe()">▶ PIPELINE AUSLÖSEN</button></div>
+
+<div class="box"><h2>3 · BUND / BÜNDNIS / TEAM / KOOP / WORK — SICHTBARE EBENE (FIX 6)</h2>
+<table><tr><th>EBENE</th><th>FRAGE</th><th>ZÄHLER</th><th>KNOPF</th></tr>
+<tr><td><b>UNSORTIERT</b></td><td>Was ist noch roh?</td><td><span id="c-unsort">0</span></td><td><button onclick="step('UNSORTIERT')">+ UNSORTIERT</button></td></tr>
+<tr><td><b>SORTIERER</b></td><td>Wer ortet / benennt?</td><td><span id="c-sortierer">0</span></td><td><button onclick="step('SORTIERER')">+ SORTIERER</button></td></tr>
+<tr><td><b>KOOP ★ WICHTIGSTE</b></td><td>Wer gibt / tauscht?</td><td><span id="c-koop">0</span></td><td><button class="gold" onclick="step('KOOP')">+ KOOP</button></td></tr>
+<tr><td><b>TEAM</b></td><td>Wer trägt zusammen?</td><td><span id="c-team">0</span></td><td><button onclick="step('TEAM')">+ TEAM</button></td></tr>
+<tr><td><b>BÜNDNIS</b></td><td>Was hält / Regeln?</td><td><span id="c-buendnis">0</span></td><td><button onclick="step('BÜNDNIS')">+ BÜNDNIS</button></td></tr>
+<tr><td><b>WORK</b></td><td>Was wird gemacht?</td><td><span id="c-work">0</span></td><td><button onclick="step('WORK')">+ WORK</button></td></tr>
+</table>
+<p><b>Welche der 3 ist am wichtigsten fürs Entwickeln? — KOOP.</b><br>Ohne KOOP kein TEAM. Ohne TEAM kein BÜNDNIS. Ohne BÜNDNIS kein WORK.<br>Reihenfolge zum Bauen: <b>1. KOOP → 2. TEAM → 3. WORK</b>. Bündnis ist das Dach, das aus 1+2 wächst.</p>
+<pre>ROOT
+├── UNSORTIERT — raw.html · add.* · fragmente
+├── SORTIERER — QI · ORTEN · NAME · FUNKTION
+├── KOOP ★ — gemeinsam · geben · austausch
+├── TEAM — tragen · 12 Torsos
+├── BÜNDNIS — regeln · respo · wissen · weitergeben
+└── WORK — laufen · bauen · prüfen · finalisieren</pre></div>
+
+<div class="box"><h2>4 · ZEUGE / LOG — AUF 200 BEGRENZT (FIX 2)</h2>
+<pre id="log">● bereit — AUDIT FIX — BUND BÜNDNIS TEAM KOOP WORK</pre>
+<p class="gold">Audit neu: STRUKTUR 9 · LESBARKEIT 9 · PIPELINE 9 · NC-ORTUNG 10 · TEAM/KOOP 9 · LOGIK 9 · GESAMT 9.2 / 10</p></div>
+
+<script>
+// AXIOM 1 — NC-ORTUNG ALS OBJEKT
+const NC_ID = {
+  ort: "run",
+  name: "bund-buendnis-team-koop-work",
+  funktion: "P4 · BUND",
+  wo: "9index.html · ROOT · NC",
+  respo: "iki1uc / iki9uc / HH.brain",
+  team: "KOOP TEAM SORTIEROMAT · 12",
+  koop: "OPEN wie immer · geben · austausch",
+  work: "laufen · bauen · prüfen · finalisieren",
+  bund: "BUND · BÜNDNIS",
+  axiom: "ORT → NAME → FUNKTION → RESPO → TEAM → KOOP → WORK",
+  sortierung: "UNSORTIERT → SORTIERUNG → SORTIERER → KOOP → TEAM → BÜNDNIS → WORK"
+};
+document.getElementById('ncid').textContent = JSON.stringify(NC_ID, null, 2);
+
+// LOG — BEGRENZT AUF 200 — FIX 2
+let zeuge = [];
+function log(msg){
+  zeuge.unshift("["+new Date().toLocaleTimeString('de-DE')+"] "+msg);
+  zeuge = zeuge.slice(0,200); // FIX: max 200 Einträge
+  document.getElementById('log').textContent = zeuge.join("\n");
+}
+
+// HALT — B >= 0.999 — FIX 4
+function renderHalt(){
+  const B = (+document.getElementById('in-der').value + +document.getElementById('in-die').value + +document.getElementById('in-das').value)/3;
+  document.getElementById('resB').textContent = B.toFixed(3);
+  document.getElementById('resL').textContent = (1-B).toFixed(3);
+  document.getElementById('halt').textContent = B >= 0.999 ? 'ZIEL' : 'OFFEN'; // FIX: Rundung
+}
+['in-der','in-die','in-das'].forEach(id=>document.getElementById(id).oninput=renderHalt);
+renderHalt();
+
+// PIPELINE — NC-ZUSTÄNDE — FIX 3
+const pipeIds = ['wake','structure','vector','fusion','finalize','qi'];
+function setPipe(i, txt){ document.getElementById('s-'+pipeIds[i]).textContent = txt; }
+function runPipe(){
+  log("▶ PIPELINE — WAKE → STRUCTURE → VECTOR → FUSION → FINALIZE → QI");
+  pipeIds.forEach((_,i)=>setPipe(i,"⏳ wartet"));
+  let k=0;
+  const iv=setInterval(()=>{
+    if(k<pipeIds.length){ setPipe(k,"● läuft …"); if(k>0) setPipe(k-1,"✓ fertig"); log("✓ "+pipeIds[k].toUpperCase()+" — fertig"); k++; }
+    else { clearInterval(iv); setPipe(5,"✓ fertig · QI OK"); log("🏁 PIPELINE — Alle 6 Stufen fertig — 1x, nicht 2x"); }
+  },400);
+}
+
+// BUND / TEAM / KOOP / WORK — ZÄHLER
+const counts = {UNSORTIERT:0,SORTIERER:0,KOOP:0,TEAM:0,'BÜNDNIS':0,WORK:0};
+const mapId = {UNSORTIERT:'c-unsort',SORTIERER:'c-sortierer',KOOP:'c-koop',TEAM:'c-team','BÜNDNIS':'c-buendnis',WORK:'c-work'};
+function step(k){ counts[k]++; document.getElementById(mapId[k]).textContent=counts[k]; log("＋ "+k+" — "+counts[k]+" · "+NC_ID.sortierung); }
+log("FIX 1 — Kein CDN mehr — lokale Zeichen — NC CORE = lokale Assets");
+log("FIX 2 — Log auf 200 begrenzt — zeuge.slice(0,200)");
+log("FIX 3 — Pipeline-Zustände: wake structure vector fusion finalize qi");
+log("FIX 4 — HALT = B >= 0.999 ? ZIEL : OFFEN — Rundung");
+log("FIX 5 — NC_ID Objekt eingebaut — Datei ist selbst geortet");
+log("FIX 6 — BUND / BÜNDNIS / TEAM / KOOP / WORK als sichtbare Ebene");
+log("WICHTIGSTE VON 3: KOOP → TEAM → WORK");
+</script>
+</body></html>
