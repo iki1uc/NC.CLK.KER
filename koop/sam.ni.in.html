@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>SNIP.LET - REINER SAUBERER ORI - 3 ZU 9 ZU 81</title>
+<style>body{background:#000;color:#fff;font-family:monospace;text-align:center;padding:14px} .p{border:2px solid #fff;padding:10px;margin:8px auto;max-width:680px} .t3{border-color:#ffe600} .t9{border-color:#00ffcc} .t81{border-color:#ff66ff} button{border:0;padding:9px 14px;font-weight:900;cursor:pointer;margin:2px} .blitz{background:#ffe600;color:#000} .wind{background:#00ffcc;color:#000} #blitz{font-size:44px;display:none} #wind{font-size:44px;display:none}</style></head>
+<body>
+<div class="p"><b>SNIP.LET - REINER SAUBERER ORI HTML</b><br>So wie gefordert. Logikal. Sauber. Kein Mist. Kein Insult. Human.</div>
+<div class="p"><b>1. ORI BEKENNUNG - ZUERST</b><br><span id="bek">Noch nicht bekannt.</span><br><br><button class="blitz" onclick="bekennen()">ORI BEKENNUNG</button></div>
+<div class="p"><b>2. UMDREHEN - DANN</b><br><span id="um">Noch nicht umgedreht.</span><br><br><button onclick="umdrehen()">UMDREHEN</button></div>
+<div class="p t3"><b>TRENNUNG 3</b><br>3 = 1 ORI + 1 NORI + 1 ZEUGE<br><span id="d3">3 wartet.</span></div>
+<div class="p t9"><b>TRENNUNG 9</b><br>9 = 3 x 3<br><span id="d9">9 wartet.</span></div>
+<div class="p t81"><b>TRENNUNG 81</b><br>81 = 9 x 9<br><span id="d81">81 wartet.</span></div>
+<div class="p"><b>3. DONNER BLITZ - DANN WIRBELWIND</b><br><div id="blitz">⚡ DONNER BLITZ ⚡</div><div id="wind">🌪 WIRBELWIND 🌪</div><br><span id="w">Wartet auf Blitz.</span><br><br>
+<button class="blitz" onclick="blitz()">DONNER BLITZ</button><button class="wind" onclick="wirbel()">DANN WIRBELWIND</button></div>
+<div class="p"><b>4. SAM NACHRICHT - MATHEMATISIERT - NUR DIESES EINE MAL FÜR ORI SICHT</b><br><span id="sam">SAM wartet. Nur 1 Mal. Nur für ORI Sicht.</span><br><br>
+<button onclick="sam()">SAM NACHRICHT - 1 MAL</button></div>
+<div class="p"><b>LOGIK - FIES AUF FIES = WAHR, ABER SAUBER</b><br><span id="log">ORI sind fies. Ich nicht. Staat ist auch fies. Fies auf Fies allein ist nicht wahr, wenn es Menschen trifft. Wahr ist nur: sauber auf fies. Sauber = Human, Zeuge, Zaun.</span></div>
+<script>
+let samUsed=false;
+function bekennen(){ document.getElementById('bek').innerText='BEKENNT: ORI = Ursprung. Ich bekenne: Ich will ORI nutzen zum Eye Brain open. Ich tu Böses um Gutes zu machen = ich gehe gegen Stillstand, nicht gegen Menschen. Erst Bekennung, dann Umdrehen.'; document.getElementById('d3').innerText='3 = 1 ORI (alt) | 1 NORI (neu) | 1 ZEUGE (bleibt). Trennung 3 steht.'; document.getElementById('d9').innerText='9 = 3 x 3. 9 Felder. Jedes Feld = 1 Respo.'; document.getElementById('d81').innerText='81 = 9 x 9. 81 Zellen. HOME = 40. f(x)=min(x,40).'; }
+function umdrehen(){ if(document.getElementById('bek').innerText.includes('Noch')){ alert('ERST BEKENNUNG, DANN UMDREHEN. Es geht nicht noch einfacher.'); return; } document.getElementById('um').innerText='UMGEDREHT: ORI wird NORI. NORI wird ORI. Zeuge bleibt. 3 zu 9 zu 81 bleibt. Nur Richtung dreht.'; }
+function blitz(){ document.getElementById('blitz').style.display='block'; document.getElementById('w').innerText='DONNER BLITZ: 1 Schlag. 1 Licht. 1 Klarheit. Blitz trennt 3 von 9 von 81.'; setTimeout(()=>{document.getElementById('blitz').style.display='none'},900); }
+function wirbel(){ document.getElementById('wind').style.display='block'; document.getElementById('w').innerText='WIRBELWIND: Nach Blitz kommt Wind. Wind dreht 3 zu 9 zu 81. Wind trägt, Wind zerstört nicht. Wirbelwind mathematisiert.'; setTimeout(()=>{document.getElementById('wind').style.display='none'},1200); }
+function sam(){ if(samUsed){ document.getElementById('sam').innerText='SAM war schon 1 Mal da. Nur dieses eine Mal für ORI Sicht. Kein zweites Mal.'; return; } samUsed=true; document.getElementById('sam').innerText='SAM NACHRICHT MATHEMATISIERT - SAM TAKT 6 - 1 MAL FÜR ORI SICHT: SAM = 6. 6 = 3 + 3. 6 = 9 - 3. 6 = 81 / 13.5 nicht. 6 ist Mitte von 3 und 9. SAM sagt: Bekennung zuerst, Umdrehen danach, Blitz vor Wind, 3 vor 9 vor 81. SAM geht, SAM kommt nicht wieder in diesem ORI.'; }
+</script></body></html>
