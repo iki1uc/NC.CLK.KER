@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>SAU LAUFEN</title>
+<style>
+body{background:#000;color:#fff;font-family:monospace;text-align:center;margin:0;padding:20px}
+.panel{border:2px solid #ffe600;padding:12px;margin:10px auto;max-width:520px}
+.sau{font-size:48px;position:relative;left:0}
+button{background:#ffe600;border:0;padding:10px 18px;font-weight:900;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="panel"><b>PANEL OBEN - SONNE</b><br>Panel zur Sonne gerichtet</div>
+<div class="panel"><b>PANEL MITTE - SAU</b><br><div class="sau" id="sau">🐖</div><br><span id="txt">SAU steht. HALT.</span><br><br>
+<button onclick="laufen()">LAUFEN</button>
+<button onclick="halt()">HALTEND</button>
+<button onclick="verlauf()">VERLAUFEND</button>
+</div>
+<div class="panel"><b>PANEL UNTEN - BODEN</b><br>Struktur wie vorhanden. Nichts gelöscht. Nur umgepolt.</div>
+<script>
+let x=0, run=false, dir=1, t=null;
+function laufen(){ run=true; document.getElementById('txt').innerText='SAU läuft. Nicht stehenbleiben.'; if(!t){ t=setInterval(function(){ x+=dir*4; if(x>180) dir=-1; if(x<-180) dir=1; document.getElementById('sau').style.left=x+'px'; },30);} }
+function halt(){ run=false; clearInterval(t); t=null; document.getElementById('txt').innerText='SAU haltend. HALT ist auch laufen. Pause ist Arbeit.'; }
+function verlauf(){ run=true; document.getElementById('txt').innerText='SAU verlaufend. Alle Läufe erlaubt. Weg ist auch Weg.'; laufen(); }
+</script>
+</body>
+</html>
