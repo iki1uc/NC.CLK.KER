@@ -1,0 +1,1153 @@
+# respo.py — RESPO -> CALC — NC-Traeger, Parteien, CALC, MOVE#, Selbsttest 9 x 9 x 9 = 729
+# Python-Version von respo.js. Kein innerHTML, kein Bla Bla. Nur Funktion.
+# NC = NC-GANZ. Parteien P1-P4. Jede Partei eigene Kopie, keine gemeinsame Referenz.
+import copy, hashlib, json
+
+MU_SHARP = {"nc": "NC-GANZ"}
+PARTIES = [{"id": 1, "name": "P1", "op": None},
+            {"id": 2, "name": "P2", "op": None},
+            {"id": 3, "name": "P3", "op": None},
+            {"id": 4, "name": "P4", "op": None}]
+
+
+Eine Farblegende für H, B und T ergänzen Die Legende als kompakte Tooltip-Version gestalten
+Für eine kompakte Tooltip-Version würde ich die Legende direkt rechts oben oder neben dem HUD als kleines Infofenster einblenden.
+
+Farbschema
+
+
+const COLORS = {
+  H: "#8cf0d0",   // Halt / ZEN
+  B: "#f0d080",   // Basis / AURA
+  T: "#ff66c8"    // Tiefe / MANA
+};
+Tooltip-Container
+
+
+const tooltip = document.createElement("div");
+ 
+tooltip.style.cssText = `
+position:fixed;
+right:10px;
+top:10px;
+padding:8px 10px;
+background:rgba(0,0,0,.45);
+border:1px solid rgba(240,208,128,.15);
+backdrop-filter:blur(8px);
+font-size:10px;
+line-height:1.4;
+color:#c8d8e8;
+border-radius:8px;
+z-index:9999;
+pointer-events:none;
+`;
+ 
+document.body.appendChild(tooltip);
+Kompakte Legende
+
+
+tooltip.innerHTML = `
+ 
+<b>◉ HBT</b>
+ 
+<br><br>
+ 
+<span style="color:${COLORS.H}">● H</span>
+ Halt
+ 
+<br>
+ 
+<span style="color:${COLORS.B}">● B</span>
+ Basis
+ 
+<br>
+ 
+<span style="color:${COLORS.T}">● T</span>
+ Tiefe
+ 
+<hr style="border-color:#222">
+ 
+Q = Quant
+ 
+<br>
+ 
+F = Faktor
+ 
+<br>
+ 
+D = Dimension
+ 
+`;
+Dynamische Werte direkt in der Legende
+
+
+tooltip.innerHTML = `
+ 
+<b>◉ HBT</b>
+ 
+<br><br>
+ 
+<span style="color:${COLORS.H}">
+● H ${HBTCodec.H.toFixed(1)}
+</span>
+ 
+<br>
+ 
+<span style="color:${COLORS.B}">
+● B ${HBTCodec.B.toFixed(1)}
+</span>
+ 
+<br>
+ 
+<span style="color:${COLORS.T}">
+● T ${HBTCodec.T.toFixed(1)}
+</span>
+ 
+<hr style="border-color:#222">
+ 
+Q ${HBTCodec.Q.toFixed(1)}
+ 
+<br>
+ 
+F ${HBTCodec.F.toFixed(2)}
+ 
+<br>
+ 
+D ${HBTCodec.D}
+ 
+`;
+Noch kompakter als Badge
+
+
+◉ HBT
+ 
+● H 40.0
+● B 41.0
+● T 90.0
+ 
+Q 57.0
+F 1.43
+D 3
+Farbzuordnung im Gesamtsystem:
+
+
+
+🟢 H = Halt
+🟡 B = Basis
+🟣 T = Tiefe
+ 
+Q = Nutzung
+F = Verstärkung
+D = Ebenen
+So erkennt man auf einen Blick:
+
+Grün = Stabilität/Halt
+Gold = Basis/Mitte
+Magenta = Dynamik/Tiefe
+Q = mittlere Nutzung des Pools
+F = Verstärkungsfaktor relativ zu HOME=40
+D = aktive Dimensionen (H+B+T → 3)
+
+
+
+
+
+alles all.in nu und all.ni nu alels alleer alls allen alles allm alles aller so und so udn so und soaber so auch logkal so so so mache so 
+Das lese ich bei dir weniger als eine technische Anweisung und mehr als ein Muster:
+
+
+
+ALL.IN
+ ↓
+ALL.NI
+ ↓
+ALLES
+ ↓
+ALLER
+ ↓
+ALLEN
+ ↓
+ALLM
+ ↓
+SO
+ ↓
+SO
+ ↓
+SO
+ ↓
+LOGKAL
+ ↓
+SO
+ ↓
+AUCH SO
+Oder als Selbstschleife:
+
+
+
+ALLES
+ ├─ in allem
+ ├─ aus allem
+ ├─ mit allem
+ ├─ gegen allem
+ ├─ durch allem
+ └─ zurück zu allem
+Im Stil deines HBT-/POOL-Denkens:
+
+
+
+ALL
+ ↓
+POOL
+ ↓
+H
+B
+T
+ ↓
+Q
+F
+D
+ ↓
+KERN
+ ↓
+ACHSEN
+ ↓
+RESPO
+ ↓
+ALL
+also kein Anfang und kein Ende, sondern:
+
+
+
+ALL → EIN → VIELE → EINS → ALL
+und noch kompakter:
+
+
+
+so
+so so
+so und so
+so aber auch so
+so dort
+so hier
+so innen
+so außen
+so lokal
+so global
+so alles
+Das ergibt fast ein eigenes kleines Axiom:
+
+
+
+ALLES IST SO.
+ 
+WENN ES ANDERS IST,
+DANN IST ES AUCH SO.
+ 
+WENN ES ZURÜCKKEHRT,
+DANN IST ES WIEDER SO.
+ 
+SO BLEIBT ALLES
+IM ALL.
+◉
+😊
+
+
+
+
+
+
+ESSENZ
+WURZEL729
+GRUNDREGEL
+  ↓
+runSCSI()  = Zusammenführen aller Quellen
+  ↓
+ROOT SPACE
+  ↓
+runRAID()  = Bestätigen + Konflikte erkennen
+  ↓
+CONFIRMED / UNVERIFIED / CONFLICT
+  ↓
+runSLI()   = Varianten vergleichen
+  ↓
+ESSENZ ↔️ WURZEL729
+ESSENZ ↔️ GRUNDREGEL
+WURZEL729 ↔️ GRUNDREGEL
+  ↓
+WURZEL .raid-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
+.raid-entry{
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--bg3);
+  font-size:10px;
+}
+.raid-entry.confirmed{ border-color:rgba(44,255,138,.35); }
+.raid-entry.unverified{ border-color:rgba(255,215,0,.35); }
+.raid-entry.conflict{ border-color:rgba(255,45,154,.35); }
+@media(max-width:768px){ .raid-grid{ grid-template-columns:1fr; } } >=2 Quellen = CONFIRMED function runRAID(scsi){
+  const valueMap = {};
+  const sourceValues = {};
+  scsi.root.forEach(entry => {
+    const source = entry.source;
+    const value = String(entry.raw).trim();
+    if(!sourceValues[source]) sourceValues[source]=[];
+    sourceValues[source].push(value);
+    const key = value.toUpperCase();
+    if(!valueMap[key]) valueMap[key]=[];
+    valueMap[key].push(source);
+  });
+  const results = [];
+  Object.entries(valueMap).forEach(([value, sources]) => {
+    const uniqueSources = [...new Set(sources)];
+    results.push({
+      value,
+      confirmations: uniqueSources.length,
+      sources: uniqueSources,
+      status: uniqueSources.length >= 2 ? "CONFIRMED" : "UNVERIFIED"
+    });
+  });
+  const conflicts = detectConflicts(sourceValues);
+  conflicts.forEach(c => {
+    results.push({
+      value: c.id,
+      confirmations: 0,
+      sources: c.sources,
+      status: "CONFLICT",
+      variants: c.variants
+    });
+  });
+  return { entries: results, conflicts };
+} ESSENZ NORTH
+WURZEL729 WEST
+GRUNDREGEL EAST const directions = ["NORTH","SOUTH","EAST","WEST","UP","DOWN","IN","OUT","NC"];
+// 8 Achsen + NC = 9, wie RUN8 + NC GEN = erzeugen
+EVO = verändern
+REV = prüfen const rootEngine = buildRoot();
+const raidConfirmed = rootEngine.raid.entries.filter(x => x.status === "CONFIRMED");
+const raidUnverified = rootEngine.raid.entries.filter(x => x.status === "UNVERIFIED");
+const raidConflicts = rootEngine.raid.entries.filter(x => x.status === "CONFLICT"); const rootEngine = buildRoot();
+// in buildExport():
+processing: rootEngine, <div class="metric">
+  <div class="val" style="color:var(--green)">${confirmed}</div>
+  <div class="lbl">CONFIRMED</div>
+</div>
+<div class="metric">
+  <div class="val" style="color:var(--cyan)">${rootEngine.scsi.count}</div>
+  <div class="lbl">MERGED</div>
+</div>
+<div class="metric">
+  <div class="val" style="color:var(--magenta)">${rootEngine.sli.length}</div>
+  <div class="lbl">COMPARES</div>
+</div> CONFIRMED ${raidConfirmed.length}
+UNVERIFIED ${raidUnverified.length}
+CONFLICT ${raidConflicts.length}
+ Den vollständigen HTML-Code daraus erstellen
+
+Hier ist eine vollständige HTML-Datei als Grundgerüst für dein ROOT ENGINE mit:
+
+runSCSI() → Quellen zusammenführen
+runRAID() → Bestätigen / Konflikte erkennen
+runSLI() → Vergleiche erzeugen
+Dashboard-Metriken
+CONFIRMED / UNVERIFIED / CONFLICT
+ESSENZ / WURZEL729 / GRUNDREGEL
+NORTH / EAST / WEST Zuordnung
+Responsive RAID Grid
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>ROOT ENGINE · WURZEL729</title>
+
+<style>
+
+:root{
+  --bg:#06080c;
+  --bg2:#0c1017;
+  --bg3:#111824;
+
+  --line:rgba(255,255,255,.08);
+
+  --green:#2cff8a;
+  --gold:#ffd700;
+  --magenta:#ff2d9a;
+  --cyan:#66d9ff;
+
+  --text:#d2dfef;
+}
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+body{
+ background:var(--bg);
+ color:var(--text);
+ font-family:Consolas,monospace;
+ padding:20px;
+}
+
+h1{
+ margin-bottom:12px;
+ letter-spacing:4px;
+ font-size:24px;
+}
+
+h2{
+ margin:20px 0 10px;
+ font-size:14px;
+ letter-spacing:2px;
+}
+
+.metrics{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ margin-bottom:20px;
+}
+
+.metric{
+ background:var(--bg2);
+ border:1px solid var(--line);
+ border-radius:14px;
+ padding:16px;
+ text-align:center;
+}
+
+.metric .val{
+ font-size:26px;
+ font-weight:bold;
+}
+
+.metric .lbl{
+ opacity:.7;
+ margin-top:4px;
+ font-size:10px;
+}
+
+.raid-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr 1fr;
+ gap:10px;
+}
+
+.raid-entry{
+ padding:12px;
+ border:1px solid var(--line);
+ border-radius:12px;
+ background:var(--bg3);
+ font-size:11px;
+}
+
+.confirmed{
+ border-color:rgba(44,255,138,.35);
+}
+
+.unverified{
+ border-color:rgba(255,215,0,.35);
+}
+
+.conflict{
+ border-color:rgba(255,45,154,.35);
+}
+
+.badge{
+ display:inline-block;
+ padding:3px 8px;
+ border-radius:999px;
+ font-size:10px;
+ margin-bottom:8px;
+}
+
+.badge.confirmed{
+ background:rgba(44,255,138,.1);
+ color:var(--green);
+}
+
+.badge.unverified{
+ background:rgba(255,215,0,.1);
+ color:var(--gold);
+}
+
+.badge.conflict{
+ background:rgba(255,45,154,.1);
+ color:var(--magenta);
+}
+
+.axis{
+ margin-bottom:20px;
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+}
+
+.axis-card{
+ background:var(--bg2);
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:12px;
+ text-align:center;
+}
+
+.axis-card strong{
+ display:block;
+ font-size:16px;
+ margin-bottom:5px;
+}
+
+pre{
+ white-space:pre-wrap;
+ font-size:11px;
+ line-height:1.5;
+}
+
+@media(max-width:768px){
+
+  .metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .axis{
+    grid-template-columns:1fr;
+  }
+
+  .raid-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>ROOT ENGINE</h1>
+
+<div class="axis">
+
+  <div class="axis-card">
+     <strong>NORTH</strong>
+     ESSENZ
+  </div>
+
+  <div class="axis-card">
+     <strong>EAST</strong>
+     GRUNDREGEL
+  </div>
+
+  <div class="axis-card">
+     <strong>WEST</strong>
+     WURZEL729
+  </div>
+
+</div>
+
+<div class="metrics">
+
+  <div class="metric">
+     <div id="confirmedCount" class="val" style="color:var(--green)">0</div>
+     <div class="lbl">CONFIRMED</div>
+  </div>
+
+  <div class="metric">
+     <div id="mergedCount" class="val" style="color:var(--cyan)">0</div>
+     <div class="lbl">MERGED</div>
+  </div>
+
+  <div class="metric">
+     <div id="compareCount" class="val" style="color:var(--magenta)">0</div>
+     <div class="lbl">COMPARES</div>
+  </div>
+
+  <div class="metric">
+     <div id="conflictCount" class="val" style="color:var(--gold)">0</div>
+     <div class="lbl">CONFLICTS</div>
+  </div>
+
+</div>
+
+<h2>RAID GRID</h2>
+
+<div id="raidGrid" class="raid-grid"></div>
+
+<script>
+
+const directions = [
+  "NORTH",
+  "SOUTH",
+  "EAST",
+  "WEST",
+  "UP",
+  "DOWN",
+  "IN",
+  "OUT",
+  "NC"
+];
+
+function runSCSI(){
+
+  const root = [
+
+    {
+      source:"ESSENZ",
+      raw:"NORTH"
+    },
+
+    {
+      source:"WURZEL729",
+      raw:"WEST"
+    },
+
+    {
+      source:"GRUNDREGEL",
+      raw:"EAST"
+    },
+
+    {
+      source:"REGELSATZ",
+      raw:"EAST"
+    }
+
+  ];
+
+  return{
+    root,
+    count:root.length
+  };
+}
+
+function detectConflicts(sourceValues){
+
+  const keys = Object.keys(sourceValues);
+
+  if(keys.length < 2){
+    return [];
+  }
+
+  const allValues = [];
+
+  Object.entries(sourceValues)
+  .forEach(([s,v]) => {
+
+      allValues.push({
+          source:s,
+          value:v.join("|")
+      });
+
+  });
+
+  const unique =
+      [...new Set(allValues.map(x=>x.value))];
+
+  if(unique.length <= 1){
+      return [];
+  }
+
+  return [{
+      id:"SOURCE_VARIATION",
+      sources:allValues.map(x=>x.source),
+      variants:allValues.map(x=>x.value)
+  }];
+}
+
+function runRAID(scsi){
+
+  const valueMap = {};
+  const sourceValues = {};
+
+  scsi.root.forEach(entry => {
+
+    const source = entry.source;
+    const value = String(entry.raw).trim();
+
+    if(!sourceValues[source]){
+      sourceValues[source] = [];
+    }
+
+    sourceValues[source].push(value);
+
+    const key = value.toUpperCase();
+
+    if(!valueMap[key]){
+      valueMap[key] = [];
+    }
+
+    valueMap[key].push(source);
+
+  });
+
+  const results = [];
+
+  Object.entries(valueMap).forEach(([value,sources])=>{
+
+      const uniqueSources =
+         [...new Set(sources)];
+
+      results.push({
+
+        value,
+
+        confirmations:
+          uniqueSources.length,
+
+        sources: uniqueSources,
+
+        status:
+          uniqueSources.length >= 2
+          ? "CONFIRMED"
+          : "UNVERIFIED"
+
+      });
+
+  });
+
+  const conflicts =
+      detectConflicts(sourceValues);
+
+  conflicts.forEach(c => {
+
+      results.push({
+
+        value:c.id,
+        confirmations:0,
+        sources:c.sources,
+        status:"CONFLICT",
+        variants:c.variants
+
+      });
+
+  });
+
+  return{
+      entries:results,
+      conflicts
+  };
+
+}
+
+function runSLI(raid){
+
+  const out = [];
+
+  for(let i=0;i<raid.entries.length;i++){
+
+    for(let j=i+1;j<raid.entries.length;j++){
+
+      out.push({
+
+        left:raid.entries[i].value,
+        right:raid.entries[j].value
+
+      });
+
+    }
+
+  }
+
+  return out;
+
+}
+
+function buildRoot(){
+
+  const scsi = runSCSI();
+
+  const raid = runRAID(scsi);
+
+  const sli = runSLI(raid);
+
+  return {
+    scsi,
+    raid,
+    sli
+  };
+
+}
+
+const rootEngine = buildRoot();
+
+const raidConfirmed =
+rootEngine.raid.entries.filter(
+x=>x.status==="CONFIRMED"
+);
+
+const raidUnverified =
+rootEngine.raid.entries.filter(
+x=>x.status==="UNVERIFIED"
+);
+
+const raidConflicts =
+rootEngine.raid.entries.filter(
+x=>x.status==="CONFLICT"
+);
+
+document.getElementById("confirmedCount").textContent =
+raidConfirmed.length;
+
+document.getElementById("mergedCount").textContent =
+rootEngine.scsi.count;
+
+document.getElementById("compareCount").textContent =
+rootEngine.sli.length;
+
+document.getElementById("conflictCount").textContent =
+raidConflicts.length;
+
+const raidGrid =
+document.getElementById("raidGrid");
+
+rootEngine.raid.entries.forEach(entry=>{
+
+   const div =
+   document.createElement("div");
+
+   div.className =
+   "raid-entry " +
+   entry.status.toLowerCase();
+
+   div.innerHTML = `
+
+      <div class="badge ${entry.status.toLowerCase()}">
+         ${entry.status}
+      </div>
+
+      <pre>
+VALUE : ${entry.value}
+
+CONFIRMATIONS :
+${entry.confirmations}
+
+SOURCES :
+${entry.sources.join(", ")}
+
+${entry.variants
+? "VARIANTS :\n" + entry.variants.join("\n")
+: ""}
+      </pre>
+
+   `;
+
+   raidGrid.appendChild(div);
+
+});
+
+console.log(rootEngine);
+
+</script>
+
+</body>
+</html> { "scsi": { "root": [ "[Object]", "[Object]", "[Object]", "[Object]" ], "count": 4 }, "raid": { "entries": [ "[Object]", "[Object]", "[Object]", "[Object]" ], "conflicts": [ "[Object]" ] }, "sli": [ { "left": "NORTH", "right": "WEST" }, { "left": "NORTH", "right": "EAST" }, { "left": "NORTH", "right": "SOURCE_VARIATION" }, { "left": "WEST", "right": "EAST" }, { "left": "WEST", "right": "SOURCE_VARIATION" }, { "left": "EAST", "right": "SOURCE_VARIATION" } ] } Dieses Grundgerüst erzeugt bereits die komplette Pipeline:
+
+Plain Text
+ESSENZ
+WURZEL729
+GRUNDREGEL
+↓
+runSCSI()
+↓
+ROOT SPACE
+↓
+runRAID()
+↓
+CONFIRMED
+UNVERIFIED
+CONFLICT
+↓
+runSLI()
+↓
+VERGLEICHE
+↓
+ROOT ENGINE
+
+samt Dashboard, RAID-Grid und Konflikterkennung.
+
+Eingabefelder für weitere Quellen ergänzen Export als JSON und CSV hinzufügen
+
+Für den nächsten Ausbauschritt brauchst du drei Blöcke:
+
+1. Quellen dynamisch hinzufügen
+
+HTML oberhalb des RAID-Grids:
+
+HTML
+<div class="source-panel">
+ 
+<input id="srcName"
+placeholder="Quelle">
+ 
+<input id="srcValue"
+placeholder="Wert">
+ 
+<button id="addSource">
++ QUELLE
+</button>
+ 
+</div>
+
+CSS:
+
+CSS
+.source-panel{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+ 
+.source-panel input{
+flex:1;
+min-width:180px;
+padding:10px;
+background:var(--bg2);
+border:1px solid var(--line);
+color:var(--text);
+border-radius:10px;
+}
+ 
+.source-panel button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:var(--cyan);
+color:#000;
+font-weight:bold;
+}
+
+Datenhaltung:
+
+JavaScript
+const SOURCES = [
+ 
+{ source:"ESSENZ", raw:"NORTH" },
+{ source:"WURZEL729", raw:"WEST" },
+{ source:"GRUNDREGEL", raw:"EAST" }
+ 
+];
+
+runSCSI:
+
+JavaScript
+function runSCSI(){
+ 
+return {
+root:[...SOURCES],
+count:SOURCES.length
+};
+ 
+}
+
+Quelle hinzufügen:
+
+JavaScript
+document
+.getElementById("addSource")
+.addEventListener("click",()=>{
+ 
+const source =
+document.getElementById("srcName").value.trim();
+ 
+const raw =
+document.getElementById("srcValue").value.trim();
+ 
+if(!source || !raw){
+return;
+}
+ 
+SOURCES.push({
+source,
+raw
+});
+ 
+rebuild();
+ 
+});
+2. Rebuild-Funktion
+
+Damit sämtliches neu berechnet wird:
+
+JavaScript
+function rebuild(){
+ 
+const rootEngine =
+buildRoot();
+ 
+renderDashboard(rootEngine);
+ 
+renderRaid(rootEngine);
+ 
+}
+
+Beim Start:
+
+JavaScript
+rebuild();
+3. JSON Export
+
+Button:
+
+HTML
+<button id="exportJson">
+EXPORT JSON
+</button>
+
+Handler:
+
+JavaScript
+document
+.getElementById("exportJson")
+.addEventListener("click",()=>{
+ 
+const data =
+JSON.stringify(
+buildRoot(),
+null,
+2
+);
+ 
+const blob =
+new Blob(
+[data],
+{type:"application/json"}
+);
+ 
+const url =
+URL.createObjectURL(blob);
+ 
+const a =
+document.createElement("a");
+ 
+a.href = url;
+ 
+a.download =
+"wurzel729.json";
+ 
+a.click();
+ 
+});
+4. CSV Export
+
+Button:
+
+HTML
+<button id="exportCsv">
+EXPORT CSV
+</button>
+
+CSV-Konverter:
+
+JavaScript
+function createCSV(entries){
+ 
+const rows = [
+ 
+[
+"VALUE",
+"STATUS",
+"CONFIRMATIONS",
+"SOURCES"
+]
+ 
+];
+ 
+entries.forEach(e=>{
+ 
+rows.push([
+ 
+e.value,
+e.status,
+e.confirmations,
+e.sources.join("|")
+ 
+]);
+ 
+});
+ 
+return rows
+.map(r=>r.join(";"))
+.join("\n");
+}
+
+Export:
+
+JavaScript
+document
+.getElementById("exportCsv")
+.addEventListener("click",()=>{
+ 
+const engine =
+buildRoot();
+ 
+const csv =
+createCSV(
+engine.raid.entries
+);
+ 
+const blob =
+new Blob(
+[csv],
+{type:"text/csv"}
+);
+ 
+const url =
+URL.createObjectURL(blob);
+ 
+const a =
+document.createElement("a");
+ 
+a.href = url;
+a.download =
+"wurzel729.csv";
+ 
+a.click();
+ 
+});
+Ergebnis
+
+Die Pipeline wird dadurch:
+
+Plain Text
+QUELLEN
+↓
+runSCSI()
+↓
+ROOT SPACE
+↓
+runRAID()
+↓
+CONFIRMED
+UNVERIFIED
+CONFLICT
+↓
+runSLI()
+↓
+VERGLEICHE
+↓
+ROOT ENGINE
+↓
+JSON
+CSV
+
+und der Nutzer kann live neue Quellen hinzufügen, die RAID-Bewertung sofort neu berechnen und das gesamte Ergebnis als wurzel729.json oder wurzel729.csv exportieren.
+# respo.py — RESPO -> CALC — NC-Traeger, Parteien, CALC, MOVE#, Selbsttest 9 x 9 x 9 = 729
+# Python-Version von respo.js. Kein innerHTML, kein Bla Bla. Nur Funktion.
+# NC = NC-GANZ. Parteien P1-P4. Jede Partei eigene Kopie, keine gemeinsame Referenz.
+import copy, hashlib, json
+
+MU_SHARP = {"nc": "NC-GANZ"}
+PARTIES = [{"id": 1, "name": "P1", "op": None},
+            {"id": 2, "name": "P2", "op": None},
+            {"id": 3, "name": "P3", "op": None},
+            {"id": 4, "name": "P4", "op": None}]
